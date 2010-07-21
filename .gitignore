@@ -1,4 +1,5 @@
 .project
 .settings
+xpi/
 *.xpi
 *.backup
