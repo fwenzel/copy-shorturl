@@ -1,0 +1,12 @@
+{
+    "description": "If a page exposes a short URL via a 'link rev=canonical' header, fetch it and copy it to the clipboard. If not, create a shorturl at tinyurl and copy it to the clipboard as well.",
+    "author": "Fred Wenzel <fwenzel@mozilla.com>",
+    "dependencies": [
+        "jetpack-core",
+        "clipboard"
+    ],
+    "version": "0.1",
+    "fullName": "Copy Short URL",
+    "id": "jid0-ODIKJS9b4IT3H1NYlPKr0NDtLuE",
+    "name": "copy-shorturl"
+}
