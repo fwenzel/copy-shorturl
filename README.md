@@ -1,11 +1,12 @@
 Copy ShortURL Add-on
 ====================
-
 by Fred Wenzel ``<fwenzel@mozilla.com>``
 
-On any webpage, you get a new item in the right click menu called “copy
-short URL”. When you click it, the add-on looks for a canonical short URL
-exposed in the page header. Currently, a number of major websites
+This is a Firefox add-on built with the Jetpack SDK.
+
+On any webpage, this jetpack adds a new item in the right click menu called
+“copy short URL”. When you click it, the add-on looks for a canonical short
+URL exposed in the page header. Currently, a number of major websites
 expose their own short URLs for any entry on their webpages, among these:
 
 * youtube (“youtu.be/…”),
@@ -21,3 +22,11 @@ automatically falls back to making a short URL using tinyurl.com.
 Either way, after a fraction of a second, you end up with a short URL in your
 clipboard, ready to be used in forum posts, tweets, or wherever else you
 please.
+
+Dependencies
+------------
+* [Jetpack][jetpack] SDK 0.5
+* [clipboard][clipboard] library
+
+[clipboard]: http://github.com/erikvold/eriks-jetpack-packages
+[jetpack]: https://jetpack.mozillalabs.com/
