@@ -26,8 +26,6 @@ please.
 
 Dependencies
 ------------
-* [Jetpack][jetpack] SDK 0.5
-* [clipboard][clipboard] library
+* [Jetpack][jetpack] SDK 0.7 (trunk)
 
-[clipboard]: http://github.com/erikvold/eriks-jetpack-packages
 [jetpack]: https://jetpack.mozillalabs.com/
