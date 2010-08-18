@@ -11,6 +11,7 @@ expose their own short URLs for any entry on their webpages, among these:
 
 * youtube (“youtu.be/…”),
 * flickr (“flic.kr/…”),
+* wordpress.com,
 * Arstechnica,
 * Techcrunch,
 
