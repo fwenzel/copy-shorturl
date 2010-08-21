@@ -38,6 +38,7 @@ it is trying to shorten. As a reply from the shortening service, it expects
 a one-line, plain text document containing the shortened URL.
 
 Examples:
+
 * ``http://is.gd/api.php?longurl=%URL%`` (default) [(docs)][isgd]
 * ``http://tinyurl.com/api-create.php?url=%URL%`` [(3rd party docs)][tiny]
 * ``http://api.bit.ly/v3/shorten?format=txt&login=<login>&apiKey=<apiKey>&longUrl=%URL%`` [(docs)][bitly]
