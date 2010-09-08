@@ -49,6 +49,20 @@ Examples:
 [tiny]: http://www.scripting.com/stories/2007/06/27/tinyurlHasAnApi.html
 [yourls]: http://yourls.org/#API
 
+Notifications
+-------------
+By default, the add-on uses [Growl][growl] notifications, with a fallback to a
+standard Firefox notification box in case Growl is not present. If you prefer
+to change this behavior, or even want to switch off notifications altogether,
+there's an option you can set. In ``about:config``, set the setting
+``extensions.copyshorturl.notifications`` to:
+
+``0``: Switches off notifications altogether
+``1``: Always uses a standard notification bar
+``2`` (default): Uses Growl if present, a notification bar otherwise.
+
+[growl]: http://growl.info/
+
 Dependencies
 ------------
 * [Jetpack][jetpack] SDK 0.7 (trunk)
