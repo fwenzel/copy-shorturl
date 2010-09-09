@@ -1,20 +1,24 @@
-.. Copy ShortURL documentation master file, created by
-   sphinx-quickstart on Wed Sep  8 15:53:02 2010.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to Copy ShortURL's documentation!
 =========================================
 
-Contents:
+**Copy ShortURL** is a `Firefox add-on <https://addons.mozilla.org/en-US/firefox/addon/197224/>`_.
+It allows you to copy a short URL for the page you are currently visiting to
+your clipboard at the click of a button.
+
+
+Contents
+--------
 
 .. toctree::
    :maxdepth: 2
 
+   intro
+   serviceurl
+   notifications
+
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

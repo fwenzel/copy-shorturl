@@ -1,8 +1,9 @@
-.project
-.settings
+\.DS_Store
+\.project
+\.settings
 xpi/
-*.xpi
-*.backup
+*\.xpi
+*\.backup
 docs/_build
 docs/_static
 docs/_templates
