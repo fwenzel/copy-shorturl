@@ -22,5 +22,9 @@ Examples:
   <http://www.scripting.com/stories/2007/06/27/tinyurlHasAnApi.html>`__
 * ``http://api.bit.ly/v3/shorten?format=txt&login=<login>&apiKey=<apiKey>&longUrl=%URL%``
   `(docs) <http://code.google.com/p/bitly-api/wiki/ApiDocumentation#/v3/shorten>`__
+
+  - This also works with ``j.mp`` which is operated by bit.ly -- just replace
+    ``bit.ly`` with ``j.mp`` in the URL.
+
 * ``http://yoursite.com/yourls-api.php?signature=<apikey>&action=shorturl&format=simple&url=%URL%``
   `(docs) <http://yourls.org/#API>`__
