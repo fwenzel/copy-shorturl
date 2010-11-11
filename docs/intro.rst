@@ -39,4 +39,4 @@ find out how.
 
 Dependencies
 ------------
-* `Jetpack <https://jetpack.mozillalabs.com/>`_ SDK 0.7 (trunk)
+* `Jetpack <https://jetpack.mozillalabs.com/>`_ SDK 0.9
