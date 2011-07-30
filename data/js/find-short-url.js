@@ -14,7 +14,7 @@ self.on('click', function(node, data) {
         // use canonical URL if it exists, current URL otherwise.
         let canonical = document.querySelector('link[rel=canonical]');
         if (!(canonical && (link = canonical.href + hash)))
-            link = document.location.href;
+            link = hash ? node.href : document.location.href;
 
         self.postMessage({short: false, url: link});
     }
