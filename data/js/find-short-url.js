@@ -16,6 +16,6 @@ self.on('click', function(node, data) {
         if (!(canonical && (link = canonical.href)))
             link = document.location.href;
 
-        self.postMessage({short: false, url: link + hash});
+        self.postMessage({short: false, url: link + document.location.hash});
     }
 });
