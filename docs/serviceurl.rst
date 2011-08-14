@@ -17,7 +17,7 @@ a one-line, plain text document containing the shortened URL.
 Examples:
 
 * ``http://is.gd/api.php?longurl=%URL%`` (default) `(docs)
-  <http://is.gd/api_info.php>`__
+  <http://is.gd/apishorteningreference.php>`__
 * ``http://tinyurl.com/api-create.php?url=%URL%`` `(3rd party docs)
   <http://www.scripting.com/stories/2007/06/27/tinyurlHasAnApi.html>`__
 * ``http://api.bit.ly/v3/shorten?format=txt&login=<login>&apiKey=<apiKey>&longUrl=%URL%``
