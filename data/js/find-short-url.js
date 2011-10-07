@@ -7,7 +7,7 @@ self.on('click', function(node, data) {
     let short = document.querySelector(selectors),
         link;
     if (short && (link = short.href)) {
-        postMessage({short: true, url: link});
+        self.postMessage({short: true, url: link});
         return;
     } else {
         // use canonical URL if it exists, current URL otherwise.
@@ -15,6 +15,6 @@ self.on('click', function(node, data) {
         if (!(canonical && (link = canonical.href)))
             link = document.location.href;
 
-        postMessage({short: false, url: link});
+        self.postMessage({short: false, url: link});
     }
 });
