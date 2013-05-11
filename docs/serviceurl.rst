@@ -5,9 +5,10 @@ By default, Copy ShortURL falls back to the URL shortening service is.gd. As I
 am not affiliated with is.gd however, I wanted to make it easy for people to
 use whatever service they like.
 
-So if you want to use a different service, you can define the service URL
-yourself. To do that, enter ``about:config`` into the location bar, and edit
-the setting ``extensions.copyshorturl.serviceURL``.
+You may specify a different service by clicking "preferences" on Copy ShortURL
+in the Firefox add-ons pane.
+
+There, you can choose from default services or enter your own custom URL.
 
 When creating a new short URL, the add-on will request (GET) the URL you
 specify here, while replacing the placeholder ``%URL%`` with the long URL that

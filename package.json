@@ -5,9 +5,37 @@
         "addon-kit",
         "api-utils"
     ],
-    "version": "1.5",
+    "version": "2.0",
     "fullName": "Copy ShortURL",
     "id": "jid0-ODIKJS9b4IT3H1NYlPKr0NDtLuE",
     "name": "copy-shorturl",
-    "homepage": "http://copy-shorturl.rtfd.org"
+    "homepage": "http://copy-shorturl.rtfd.org",
+    "preferences": [{
+        "name": "service",
+        "type": "menulist",
+        "title": "URL Shortening Service",
+        "value": "isgd",
+        "options": [
+            {
+                "value": "isgd",
+                "label": "is.gd (http://is.gd/abcde)"
+            }, {
+                "value": "tinyurl",
+                "label": "tinyurl.com (http://tinyurl.com/abcde)"
+            }, {
+                "value": "custom",
+                "label": "Custom (specify below)"
+            }
+        ]
+    }, {
+        "name": "customurl",
+        "type": "string",
+        "value": "",
+        "title": "Custom URL (use %URL% as placeholder for long URL)"
+    }, {
+        "name": "serviceurl_docs",
+        "type": "control",
+        "label": "Read the Docs",
+        "title": "Docs about custom service URL"
+    }]
 }
