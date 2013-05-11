@@ -23,6 +23,9 @@
                 "value": "tinyurl",
                 "label": "tinyurl.com (http://tinyurl.com/abcde)"
             }, {
+                "value": "googl",
+                "label": "goo.gl (http://goo.gl/abcde)"
+            }, {
                 "value": "custom",
                 "label": "Custom (specify below)"
             }
