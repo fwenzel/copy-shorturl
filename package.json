@@ -13,7 +13,7 @@
     "preferences": [{
         "name": "service",
         "type": "menulist",
-        "title": "URL Shortening Service",
+        "title": "(L10n)",
         "value": "isgd",
         "options": [
             {
@@ -27,19 +27,20 @@
                 "label": "goo.gl (http://goo.gl/abcde)"
             }, {
                 "value": "custom",
-                "label": "Custom (specify below)"
+                "label": "custom"
             }
         ]
     }, {
         "name": "customurl",
         "type": "string",
         "value": "",
-        "title": "Custom URL (use %URL% as placeholder for long URL)"
+        "title": "(L10n)",
+        "description": "(L10n)"
     }, {
         "name": "serviceurl_docs",
         "type": "control",
-        "label": "Read the Docs",
-        "title": "Docs about custom service URL"
+        "label": "(L10n)",
+        "title": "(L10n)"
     }],
     "permissions": {
         "private-browsing": true
