@@ -40,5 +40,8 @@
         "type": "control",
         "label": "Read the Docs",
         "title": "Docs about custom service URL"
-    }]
+    }],
+    "permissions": {
+        "private-browsing": true
+    }
 }
