@@ -3,7 +3,7 @@ const selectors = 'link[rev=canonical],link[rel=shorturl],link[rel=shortlink]';
 
 
 /** Find short URL in the page */
-self.on('click', function(node, data) {
+function findShortUrl() {
     let short = document.querySelector(selectors),
         link;
     if (short && (link = short.href)) {
@@ -17,4 +17,9 @@ self.on('click', function(node, data) {
 
         self.postMessage({short: false, url: link});
     }
-});
+}
+
+// For Hotkey, hook up content script to port object.
+self.port.on('detect', findShortUrl);
+// For context menu, hook up to click event.
+self.on('click', findShortUrl);
