@@ -21,11 +21,11 @@ Examples:
   <http://is.gd/apishorteningreference.php>`__
 * ``http://tinyurl.com/api-create.php?url=%URL%`` `(3rd party docs)
   <http://www.scripting.com/stories/2007/06/27/tinyurlHasAnApi.html>`__
-* ``http://api.bit.ly/v3/shorten?format=txt&login=<login>&apiKey=<apiKey>&longUrl=%URL%``
-  `(docs) <http://code.google.com/p/bitly-api/wiki/ApiDocumentation#/v3/shorten>`__
+* ``https://api-ssl.bitly.com/v3/shorten?access_token=<access_token>&format=txt&longUrl=%URL%``
+  `(docs) <http://dev.bitly.com/links.html>`__ `(access token docs)
+  <http://dev.bitly.com/authentication.html>`__
 
-  - This also works with ``j.mp`` which is operated by bit.ly -- just replace
-    ``bit.ly`` with ``j.mp`` in the URL.
+  - This also works with ``j.mp``, just add to the URL: ``&domain=j.mp``.
 
 * ``http://yoursite.com/yourls-api.php?signature=<apikey>&action=shorturl&format=simple&url=%URL%``
   `(docs) <http://yourls.org/#API>`__
