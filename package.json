@@ -1,11 +1,11 @@
 {
-    "description": "If a page exposes a short URL via a 'link rev=canonical' header, fetch it and copy it to the clipboard. If not, create a shorturl at tinyurl and copy it to the clipboard as well.",
+    "description": "Detect or create a short URL for the current page.",
     "author": "Fred Wenzel <fwenzel@mozilla.com>",
     "dependencies": [
         "addon-kit",
         "api-utils"
     ],
-    "version": "2.0",
+    "version": "2.1",
     "fullName": "Copy ShortURL",
     "id": "jid0-ODIKJS9b4IT3H1NYlPKr0NDtLuE",
     "name": "copy-shorturl",
