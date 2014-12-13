@@ -5,8 +5,8 @@ const { Cc, Ci } = require('chrome'),
       windowutils = require('sdk/deprecated/window-utils');
 
 const addon_name = 'Copy ShortURL',
-      addon_icon = data.url('img/ruler.png'),
-      addon_icon32 = data.url('img/ruler32.png'),
+      addon_icon = data.url('img/icon-16.png'),
+      addon_icon32 = data.url('img/icon-32.png'),
 
       // Preferences
       notification_pref = 'extensions.copyshorturl.notifications',

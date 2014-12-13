@@ -10,6 +10,8 @@
     "id": "jid0-ODIKJS9b4IT3H1NYlPKr0NDtLuE",
     "name": "copy-shorturl",
     "homepage": "http://copy-shorturl.rtfd.org",
+    "icon": "data/img/icon-48.png",
+    "icon64": "data/img/icon-64.png",
     "preferences": [{
         "name": "service",
         "type": "menulist",
