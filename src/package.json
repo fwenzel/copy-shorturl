@@ -1,17 +1,10 @@
 {
     "description": "Detect or create a short URL for the current page.",
     "author": "Fred Wenzel <fwenzel@mozilla.com>",
-    "dependencies": [
-        "addon-kit",
-        "api-utils"
-    ],
-    "version": "2.1",
-    "fullName": "Copy ShortURL",
-    "id": "jid0-ODIKJS9b4IT3H1NYlPKr0NDtLuE",
-    "name": "copy-shorturl",
+    "version": "2.2.0",
+    "id": "jid0-ODIKJS9b4IT3H1NYlPKr0NDtLuE@jetpack",
+    "name": "Copy Short Url",
     "homepage": "http://copy-shorturl.rtfd.org",
-    "icon": "data/img/icon-48.png",
-    "icon64": "data/img/icon-64.png",
     "preferences": [{
         "name": "service",
         "type": "menulist",
