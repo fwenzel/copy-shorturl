@@ -9,7 +9,12 @@ const _ = require('sdk/l10n').get,
       // Deprecated
       aboutconfig = require('sdk/preferences/service');
 
-const { Hotkey } = require('sdk/hotkeys');
+const { Cc, Ci, Cu } = require('chrome'),
+      { Hotkey } = require('sdk/hotkeys');
+
+// Utils for parsing URLs
+// TODO: Use SDK interface instead when it exposes what we need.
+Cu.importGlobalProperties(['URL']);
 
 
 // about:config preferences, deprecated
@@ -68,6 +73,20 @@ function getShorteningService() {
 /** Handle a URL (or ShortURL detected in context by find-short-url.js) */
 function handleDetectedUrl(found_url) {
     let url = found_url['url'];
+
+    // Remove UTM tracking codes (from Google Analytics) if present.
+    if (prefs.strip_utm) {
+        var parsedUrl = new URL(url);
+        if (/[?&]utm_/.test(parsedUrl.search)) {
+            // Find and delete all utm_ tracking parameters.
+            var utm_match = /[?&](utm_[^=]+)=/;
+            var utm_param;
+            while (utm_param = utm_match.exec(parsedUrl.search)) {
+                parsedUrl.searchParams.delete(utm_param[1]);
+            }
+            url = parsedUrl.toString();
+        }
+    }
 
     if (found_url['short']) {
         finalizeUrl(null, url, true);
