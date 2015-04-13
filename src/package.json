@@ -49,6 +49,11 @@
         "value": true,
         "title": "(L10n)",
         "description": "(L10n)"
+    }, {
+        "name": "toolbar_button",
+        "type": "bool",
+        "value": false,
+        "title": "(L10n)"
     }],
     "permissions": {
         "private-browsing": true

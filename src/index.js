@@ -9,13 +9,15 @@ const _ = require('sdk/l10n').get,
       // Deprecated
       aboutconfig = require('sdk/preferences/service');
 
-const { Cc, Ci, Cu } = require('chrome'),
+const { ActionButton } = require('sdk/ui/button/action'),
+      { Cc, Ci, Cu } = require('chrome'),
       { Hotkey } = require('sdk/hotkeys');
 
 // Utils for parsing URLs
 // TODO: Use SDK interface instead when it exposes what we need.
 Cu.importGlobalProperties(['URL']);
 
+var toolbarButton;
 
 // about:config preferences, deprecated
 const serviceurl_pref = 'extensions.copyshorturl.serviceURL';
@@ -52,6 +54,31 @@ var serviceurls = {
 require('sdk/simple-prefs').on('serviceurl_docs', function() {
     require('sdk/tabs').open(serviceurl_docs);
 });
+
+
+/** Show toolbar button. */
+function addToolbarButton() {
+    toolbarButton = ActionButton({
+        id: 'copy-shorturl-button',
+        label: 'Copy ShortURL',
+        icon: {
+            '16': data.url('img/icon-16.png'),
+            '32': data.url('img/icon-32.png'),
+            '64': data.url('img/icon-64.png'),
+        },
+        onClick: buttonAction
+    });
+}
+
+
+/** Attach URL detection script to current tab: for hotkey and action button. */
+var buttonAction = function() {
+    let worker = tabs.activeTab.attach({
+        contentScriptFile: data.url('js/find-short-url.js'),
+        onMessage: handleDetectedUrl
+    });
+    worker.port.emit('detect');
+}
 
 
 /** Determine service URL */
@@ -165,15 +192,24 @@ exports.main = function(options, callbacks) {
         onMessage: handleDetectedUrl
     });
 
-    // Enable hot key for the same functionality.
+    // Hotkey for the same functionality.
     Hotkey({
         combo: 'accel-shift-l',
-        onPress: function() {
-            let worker = tabs.activeTab.attach({
-                contentScriptFile: data.url('js/find-short-url.js'),
-                onMessage: handleDetectedUrl
-            });
-            worker.port.emit('detect');
-        }
+        onPress: buttonAction
     });
+
+    // Toolbar button if enabled.
+    if (prefs.toolbar_button) {
+        addToolbarButton();
+    }
+
+    // Add/remove toolbar button on pref change.
+    require('sdk/simple-prefs').on('toolbar_button', function() {
+        if (!prefs.toolbar_button) {
+            toolbarButton.destroy();
+            toolbarButton = null;
+        } else if (!toolbarButton) {
+            addToolbarButton();
+        }
+    })
 }
