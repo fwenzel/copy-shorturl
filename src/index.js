@@ -93,7 +93,7 @@ function handleDetectedUrl(found_url) {
         (prefs.shorten_canonical > 0 && url.length > prefs.shorten_canonical)) {
         createShortUrl(url);
     } else {
-        finalizeUrl(null, url, true);
+        finalizeUrl(null, url);
     }
 }
 
@@ -118,7 +118,7 @@ function createShortUrl(url) {
         req.addEventListener('load', function() {
             if (req.status === 200) {
                 let result = service.result ? service.result(req) : req.responseText.trim();
-                finalizeUrl(url, result, false);
+                finalizeUrl(url, result);
             } else {
                 throw new Error(_('shorten_error'));
             }
@@ -134,14 +134,9 @@ function createShortUrl(url) {
 
 
 /** Finalize (notify and copy to clipboard) a detected or generated URL. */
-function finalizeUrl(long_url, short_url, found) {
-    if (found) {
-        notify(_('found_notice') + "\n" + short_url);
-    } else {
-        notify(_('none_found_notice') + '\n' + long_url + ' --> ' + short_url);
-    }
-
-    if (short_url) clipboard.set(short_url);
+function finalizeUrl(long_url, short_url) {
+    notify(short_url);
+    clipboard.set(short_url);
 }
 
 
@@ -154,9 +149,19 @@ exports.main = function(options, callbacks) {
     }
 
     // Enable context menu on all pages
-    var item = contextMenu.Item({
+    contextMenu.Item({
         label: _('menuitem_label'),
+        image: data.url('img/icon-32.png'),
         contentScriptFile: data.url('js/find-short-url.js'),
+        onMessage: handleDetectedUrl
+    });
+
+    // Additional context menu on <a> tags.
+    contextMenu.Item({
+        label: _('shorten_link_label'),
+        image: data.url('img/icon-32.png'),
+        context: contextMenu.SelectorContext('a[href]'),
+        contentScriptFile: data.url('js/shorten-link-href.js'),
         onMessage: handleDetectedUrl
     });
 
