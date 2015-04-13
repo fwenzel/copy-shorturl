@@ -10,10 +10,12 @@ function findShortUrl() {
         self.postMessage({short: true, url: link});
         return;
     } else {
-        // use canonical URL if it exists, current URL otherwise.
-        let canonical = document.querySelector('link[rel=canonical]');
-        if (!(canonical && (link = canonical.href)))
+        // Use canonical URL if it exists, else Facebook OpenGraph or finally, document URL.
+        let canonical = document.querySelector('link[rel=canonical], meta[property="og:url"]');
+        link = (canonical && (canonical.href || canonical.content));  // link->href, meta->content
+        if (!link) {  // Document URL fallback.
             link = document.location.href;
+        }
 
         self.postMessage({short: false, url: link});
     }
