@@ -21,11 +21,18 @@ Examples:
   <http://is.gd/apishorteningreference.php>`__
 * ``http://tinyurl.com/api-create.php?url=%URL%`` `(3rd party docs)
   <http://www.scripting.com/stories/2007/06/27/tinyurlHasAnApi.html>`__
-* ``http://api.bit.ly/v3/shorten?format=txt&login=<login>&apiKey=<apiKey>&longUrl=%URL%``
-  `(docs) <http://code.google.com/p/bitly-api/wiki/ApiDocumentation#/v3/shorten>`__
-
-  - This also works with ``j.mp`` which is operated by bit.ly -- just replace
-    ``bit.ly`` with ``j.mp`` in the URL.
-
 * ``http://yoursite.com/yourls-api.php?signature=<apikey>&action=shorturl&format=simple&url=%URL%``
   `(docs) <http://yourls.org/#API>`__
+
+
+bit.ly
+------
+Popular service bit.ly has a slighty more elaborate API. Create an
+`OAuth access token <http://dev.bitly.com/authentication.html>`__, then enter
+the following custom service URL into Copy ShortURL's settings:
+
+``https://api-ssl.bitly.com/v3/shorten?format=txt&access_token=<accesstoken>&longUrl=%URL%``
+
+Replace ``<accesstoken>`` in the URL with the token you created.
+
+Full `bitly API docs <http://dev.bitly.com/api.html>`__ exist.
