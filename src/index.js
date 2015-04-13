@@ -88,10 +88,12 @@ function handleDetectedUrl(found_url) {
         }
     }
 
-    if (found_url['short']) {
-        finalizeUrl(null, url, true);
-    } else {
+    // Shorten URL if it's not considered "short" or exceeds length limit.
+    if (!found_url['short'] ||
+        (prefs.shorten_canonical > 0 && url.length > prefs.shorten_canonical)) {
         createShortUrl(url);
+    } else {
+        finalizeUrl(null, url, true);
     }
 }
 

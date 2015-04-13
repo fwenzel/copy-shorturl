@@ -38,6 +38,12 @@
         "label": "(L10n)",
         "title": "(L10n)"
     }, {
+        "name": "shorten_canonical",
+        "type": "integer",
+        "value": 30,
+        "title": "(L10n)",
+        "description": "(L10n)"
+    }, {
         "name": "strip_utm",
         "type": "bool",
         "value": true,
