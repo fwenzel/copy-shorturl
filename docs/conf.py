@@ -13,7 +13,11 @@
 
 import json
 import sys, os
-ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+
+from datetime import date
+
+ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..',
+                    'src')
 path = lambda *a: os.path.join(ROOT, *a)
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -44,7 +48,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Copy ShortURL'
-copyright = u'2010, Fred Wenzel'
+copyright = u'2010-%s, Fred Wenzel' % (date.today().year)
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
