@@ -167,6 +167,7 @@ exports.main = function(options, callbacks) {
     contextMenu.Item({
         label: _('menuitem_label'),
         image: data.url('img/icon-32.png'),
+        context: contextMenu.PageContext(),
         contentScriptFile: data.url('js/find-short-url.js'),
         onMessage: handleDetectedUrl
     });
