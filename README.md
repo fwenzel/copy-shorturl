@@ -18,4 +18,4 @@ Copy ShortURL is open source. If you'd like to contribute, feel free to open or 
 Pull requests welcome!
 
 ## License
-This is free software, &copy; 2010-2014 Fred Wenzel and licensed under an Apache 2.0 license. For more information, read the file ``LICENSE``.
+This is free software, &copy; 2010-2015 Fred Wenzel and licensed under an Apache 2.0 license. For more information, read the file ``LICENSE``.
