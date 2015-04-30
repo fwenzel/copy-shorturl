@@ -5,9 +5,7 @@ const _ = require('sdk/l10n').get,
       notify = require('./lib/simple-notify').notify,
       prefs = require('sdk/simple-prefs').prefs,
       xhr = require('sdk/net/xhr'),
-      tabs = require('sdk/tabs'),
-      // Deprecated
-      aboutconfig = require('sdk/preferences/service');
+      tabs = require('sdk/tabs');
 
 const { ActionButton } = require('sdk/ui/button/action'),
       { Cc, Ci, Cu } = require('chrome'),
@@ -18,9 +16,6 @@ const { ActionButton } = require('sdk/ui/button/action'),
 Cu.importGlobalProperties(['URL']);
 
 var toolbarButton;
-
-// about:config preferences, deprecated
-const serviceurl_pref = 'extensions.copyshorturl.serviceURL';
 
 // Service defaults.
 const default_service = 'isgd',
@@ -168,13 +163,6 @@ function finalizeUrl(long_url, short_url) {
 
 
 exports.main = function(options, callbacks) {
-    // Set URL from preference if set in old version of add-on.
-    if (aboutconfig.has(serviceurl_pref)) {
-        prefs.service = 'custom';
-        prefs.customurl = aboutconfig.get(serviceurl_pref);
-        aboutconfig.reset(serviceurl_pref);
-    }
-
     // Enable context menu on all pages
     contextMenu.Item({
         label: _('menuitem_label'),
