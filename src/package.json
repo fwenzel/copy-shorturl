@@ -14,7 +14,7 @@
         "options": [
             {
                 "value": "isgd",
-                "label": "is.gd (http://is.gd/abcde)"
+                "label": "is.gd (https://is.gd/abcde)"
             }, {
                 "value": "tinyurl",
                 "label": "tinyurl.com (http://tinyurl.com/abcde)"
