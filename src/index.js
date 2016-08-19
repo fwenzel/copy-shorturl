@@ -25,7 +25,7 @@ const default_service = 'isgd',
 // variants. Note: Use asynchronous XHR.
 var serviceurls = {
     isgd: {
-        url: 'http://is.gd/api.php?longurl=%URL%'
+        url: 'https://is.gd/api.php?longurl=%URL%'
     },
     tinyurl: {
         url: 'http://tinyurl.com/api-create.php?url=%URL%'
