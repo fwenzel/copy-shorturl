@@ -6,11 +6,11 @@ const addon_name = 'Copy ShortURL',
 
 
 function notify(txt) {
-    notifications.notify({
-        title: addon_name,
-        text: txt,
-        iconURL: addon_icon32
-    })
+  notifications.notify({
+    title: addon_name,
+    text: txt,
+    iconURL: addon_icon32
+  })
 }
 
 exports.notify = notify;
