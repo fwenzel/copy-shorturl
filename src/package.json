@@ -5,6 +5,7 @@
   "author": "Fred Wenzel <fwenzel@mozilla.com>",
   "version": "3.0.1",
   "id": "jid0-ODIKJS9b4IT3H1NYlPKr0NDtLuE@jetpack",
+  "main": "lib/main.js",
   "homepage": "http://copy-shorturl.rtfd.org",
   "preferences": [{
     "name": "service",
