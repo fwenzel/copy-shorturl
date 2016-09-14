@@ -13,9 +13,8 @@ const notify = require('./notify').notify;
 // TODO: Use SDK interface instead when it exposes what we need.
 Cu.importGlobalProperties(['URL']);
 
-// Service defaults.
-const default_service = 'isgd',
-      serviceurl_docs = 'http://copy-shorturl.readthedocs.org/en/latest/serviceurl.html';
+// Service default.
+const default_service = 'isgd';
 
 // Specify 'url' for plain-text GET APIs, or request/result for more complex
 // variants. Note: Use asynchronous XHR.
