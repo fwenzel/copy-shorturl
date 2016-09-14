@@ -1,5 +1,5 @@
 # Copy ShortURL Add-on
-by Fred Wenzel ``<fwenzel@mozilla.com>``
+by Fred Wenzel ``<code@wenzel.io>``
 
 ![](https://raw.githubusercontent.com/fwenzel/copy-shorturl/master/copy-shorturl.png)
 
@@ -10,7 +10,7 @@ page you are currently visiting to your clipboard at the click of a button.
 readthedocs.
 
 ## Installing
-Copy ShortURL is available on the [Mozilla Add-ons website](https://addons.mozilla.org/firefox/addon/copy-shorturl/). You can install it with Firefox by simply pressing the Install button there.
+Copy ShortURL is available on the [Mozilla Add-ons website](https://addons.mozilla.org/addon/copy-shorturl/). You can install it with Firefox by simply pressing the Install button there.
 
 ## Contributing
 Copy ShortURL is open source. If you'd like to contribute, feel free to open or comment on an [Issue on Github](https://github.com/fwenzel/copy-shorturl/issues).
@@ -18,4 +18,4 @@ Copy ShortURL is open source. If you'd like to contribute, feel free to open or 
 Pull requests welcome!
 
 ## License
-This is free software, &copy; 2010-2015 Fred Wenzel and licensed under an Apache 2.0 license. For more information, read the file ``LICENSE``.
+This is free software, &copy; 2010-2016 Fred Wenzel and licensed under an Apache 2.0 license. For more information, read the file ``LICENSE``.
