@@ -23,5 +23,11 @@
   ],
   "background": {
     "scripts": ["dist/bundle.js"]
+  },
+  "commands": {
+    "shorten-page-url": {
+      "suggested_key": { "default": "Ctrl+Shift+L" },
+      "description": "Copy ShortURL of the current page"
+    }
   }
 }

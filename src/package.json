@@ -1,7 +1,8 @@
 {
   "name": "copy-shorturl",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack -w"
   },
   "devDependencies": {
     "webpack": "^2.6.1"

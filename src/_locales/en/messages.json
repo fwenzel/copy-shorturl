@@ -1,7 +1,11 @@
 {
   "menuitem_label": {
     "message": "Copy ShortURL",
-    "description": "Context menu item label text."
+    "description": "Context menu item label text for page."
+  },
+  "shorten_link_label": {
+    "message": "Copy ShortURL for this link",
+    "description": "Context menu item label text for link."
   },
   "shorten_error": {
     "message": "ZOMG, error creating short URL.",
