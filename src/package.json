@@ -1,62 +1,9 @@
 {
   "name": "copy-shorturl",
-  "title": "Copy ShortURL",
-  "description": "Detect or create a short URL for the current page.",
-  "author": "Fred Wenzel <fwenzel@mozilla.com>",
-  "version": "3.0.1",
-  "id": "jid0-ODIKJS9b4IT3H1NYlPKr0NDtLuE@jetpack",
-  "main": "lib/main.js",
-  "homepage": "http://copy-shorturl.rtfd.org",
-  "preferences": [{
-    "name": "service",
-    "type": "menulist",
-    "title": "(L10n)",
-    "value": "isgd",
-    "options": [
-      {
-        "value": "isgd",
-        "label": "is.gd (https://is.gd/abcde)"
-      }, {
-        "value": "tinyurl",
-        "label": "tinyurl.com (http://tinyurl.com/abcde)"
-      }, {
-        "value": "googl",
-        "label": "goo.gl (http://goo.gl/abcde)"
-      }, {
-        "value": "custom",
-        "label": "custom"
-      }
-    ]
-  }, {
-    "name": "customurl",
-    "type": "string",
-    "value": "",
-    "title": "(L10n)",
-    "description": "(L10n)"
-  }, {
-    "name": "serviceurl_docs",
-    "type": "control",
-    "label": "(L10n)",
-    "title": "(L10n)"
-  }, {
-    "name": "shorten_canonical",
-    "type": "integer",
-    "value": 30,
-    "title": "(L10n)",
-    "description": "(L10n)"
-  }, {
-    "name": "strip_utm",
-    "type": "bool",
-    "value": true,
-    "title": "(L10n)",
-    "description": "(L10n)"
-  }, {
-    "name": "toolbar_button",
-    "type": "bool",
-    "value": false,
-    "title": "(L10n)"
-  }],
-  "permissions": {
-    "private-browsing": true
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "webpack": "^2.6.1"
   }
 }

@@ -1,0 +1,27 @@
+{
+  "name": "Copy ShortURL",
+  "description": "Detect or create a short URL for the current page.",
+  "developer": {
+    "name": "Fred Wenzel"
+  },
+  "homepage_url": "http://copy-shorturl.rtfd.org",
+  "version": "4.0.0",
+  "default_locale": "en",
+  "icons": {
+    "16": "data/img/icon-16.png",
+    "32": "data/img/icon-32.png",
+    "48": "data/img/icon-48.png",
+    "64": "data/img/icon-64.png"
+  },
+  "manifest_version": 2,
+  "permissions": [
+    "https://is.gd/*",
+    "activeTab",
+    "clipboardWrite",
+    "contextMenus",
+    "notifications"
+  ],
+  "background": {
+    "scripts": ["dist/bundle.js"]
+  }
+}

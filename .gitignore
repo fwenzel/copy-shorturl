@@ -7,3 +7,5 @@ xpi/
 docs/_build
 docs/_static
 docs/_templates
+src/dist
+src/node_modules

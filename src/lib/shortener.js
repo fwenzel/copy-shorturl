@@ -1,62 +1,26 @@
-const _ = require('sdk/l10n').get;
-const clipboard = require('sdk/clipboard');
-const data = require('sdk/self').data;
-const prefs = require('sdk/simple-prefs').prefs;
-const xhr = require('sdk/net/xhr');
+import copyToClipboard from './clipboard';
+import notify from './notify';
 
-const { Cc, Ci, Cu } = require('chrome');
-
-const notify = require('./notify').notify;
-
-
-// Utils for parsing URLs
-// TODO: Use SDK interface instead when it exposes what we need.
-Cu.importGlobalProperties(['URL']);
+const _ = browser.i18n.getMessage;
 
 // Service default.
 const default_service = 'isgd';
 
 // Specify 'url' for plain-text GET APIs, or request/result for more complex
 // variants. Note: Use asynchronous XHR.
-var serviceurls = {
+// TODO add other services back.
+const serviceUrls = {
   isgd: {
     url: 'https://is.gd/api.php?longurl=%URL%'
-  },
-  tinyurl: {
-    url: 'http://tinyurl.com/api-create.php?url=%URL%'
-  },
-  googl: {
-    // https://developers.google.com/url-shortener/v1/getting_started
-    request: function(url) {
-      let req = new xhr.XMLHttpRequest();
-      req.open('POST', 'https://www.googleapis.com/urlshortener/v1/url', true);
-      req.setRequestHeader('Content-Type', 'application/json');
-      req.send(JSON.stringify({ longUrl: url }));
-      return req;
-    },
-    result: function(req) {
-      let shortened = JSON.parse(req.responseText);
-      return shortened.id;
-    }
   }
-};
+}
 
 
 /** Determine service URL */
 function getShorteningService() {
-  if (prefs.service === 'custom') {
-    if (prefs.customurl) {
-      return {
-        url: prefs.customurl
-      };
-    } else {
-      // Restore default.
-      prefs.service = default_service;
-    }
-  }
-  return serviceurls[prefs.service];
+  // TODO hook up preferences again.
+  return serviceUrls[default_service];
 }
-
 
 /** Create a short URL from is.gd, tinyurl, etc. */
 function createShortUrl(url) {
@@ -67,7 +31,7 @@ function createShortUrl(url) {
     if (service.request) {
       req = service.request(url);
     } else {
-      req = new xhr.XMLHttpRequest();
+      req = new XMLHttpRequest();
       let _uri = service.url.replace('%URL%', encodeURIComponent(url));
       req.open('GET', _uri, true);
     }
@@ -95,17 +59,17 @@ function createShortUrl(url) {
 
 /** Finalize (notify and copy to clipboard) a detected or generated URL. */
 function finalizeUrl(long_url, short_url) {
-  clipboard.set(short_url);
+  copyToClipboard(short_url);
   notify(short_url);
 }
 
 
 /** Handle a URL found on the page */
-exports.processUrl = function(found_url) {
+export default function processUrl(found_url) {
   let url = found_url['url'];
 
   // Remove UTM tracking codes (from Google Analytics) if present.
-  if (prefs.strip_utm) {
+  if (true) { //  TODO: (prefs.strip_utm) {
     var parsedUrl = new URL(url);
     if (/[?&]utm_/.test(parsedUrl.search)) {
       // Find and delete all utm_ tracking parameters.
@@ -119,11 +83,10 @@ exports.processUrl = function(found_url) {
   }
 
   // Shorten URL if it's not considered "short" or exceeds length limit.
-  if (!found_url['short'] ||
-    (prefs.shorten_canonical > 0 && url.length > prefs.shorten_canonical)) {
+  if (!found_url['short']) { //TODO ||
+    //(prefs.shorten_canonical > 0 && url.length > prefs.shorten_canonical)) {
     createShortUrl(url);
   } else {
     finalizeUrl(null, url);
   }
 }
-

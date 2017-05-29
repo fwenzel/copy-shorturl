@@ -1,0 +1,10 @@
+{
+  "menuitem_label": {
+    "message": "Copy ShortURL",
+    "description": "Context menu item label text."
+  },
+  "shorten_error": {
+    "message": "ZOMG, error creating short URL.",
+    "description": "Error message when shortening URL was unsuccessful."
+  }
+}

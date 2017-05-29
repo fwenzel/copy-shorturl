@@ -1,16 +1,26 @@
-const simpleprefs = require('sdk/simple-prefs');
-const tabs = require('sdk/tabs');
+import processUrl from './shortener';
 
-const buttons = require('./buttons');
-
-const SERVICEURL_DOCS = 'http://copy-shorturl.readthedocs.org/en/latest/serviceurl.html';
+const _ = browser.i18n.getMessage;
 
 
-exports.main = function(options, callbacks) {
-  // Hook up pref button to service URL docs.
-  simpleprefs.on('serviceurl_docs', function() {
-    tabs.open(SERVICEURL_DOCS);
-  });
+/** Add context menus */
+browser.contextMenus.create({
+  id: 'shorten-page',
+  title: _('menuitem_label'),
+  contexts: ['page']
+});
 
-  buttons.init();
-}
+/** Process content menu clicks */
+browser.contextMenus.onClicked.addListener((info, tab) => {
+  switch (info.menuItemId) {
+    case 'shorten-page':
+      browser.tabs.executeScript({
+        file: '/data/js/find-short-url.js',
+        matchAboutBlank: true
+      });
+      break;
+  }
+});
+
+/** Handle incoming short URLs. */
+browser.runtime.onMessage.addListener(processUrl);
