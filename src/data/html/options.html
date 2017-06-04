@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    label[for], p em {
+      display: block;
+    }
+    </style>
+  </head>
+
+  <body>
+    <form>
+      <!-- service -->
+      <p>
+        <label for="service" data-i18n="service_title">service</label>
+        <select id="service">
+         <option value="isgd">is.gd (https://is.gd/abcde)</option>
+         <option value="tinyurl">tinyurl.com (http://tinyurl.com/abcde)</option>
+         <!--TODO: fix <option value="googl">goo.gl (http://goo.gl/abcde)</option>-->
+         <!--TODO: enable <option value="custom" data-i18n="service_custom">custom</option>-->
+        </select>
+      </p>
+
+      <!-- custom URL + documentation link -->
+      <p style="display:none">
+        <label for="custom_url" data-i18n="customurl_title">custom url</label>
+        <input type="text" id="custom_url">
+        <em data-i18n="customurl_description">%URL%</em>
+      </p>
+
+      <!-- shorten canconical -->
+      <p>
+        <label for="shorten_canonical" data-i18n="shorten_canonical_title">Max len</label>
+        <input type="number" id="shorten_canonical" min="0" value="0">
+        <em data-i18n="shorten_canonical_description">0 = never</em>
+      </p>
+
+      <!-- strip urm -->
+      <p>
+        <input type="checkbox" id="strip_urm">
+        <label for="strip_urm" data-i18n="strip_utm_title">strip urm</label>
+        <em data-i18n="strip_utm_description">urm marketing parameters</em>
+      </p>
+
+      <!-- add toolbar button (though always in chrome?) -->
+      <p>
+        <input type="checkbox" id="toolbar_button">
+        <label for="toolbar_button" data-i18n="toolbar_button_title">toolbar button</label>
+      </p>
+
+      <p><button type="submit">Save</button></p>
+    </form>
+
+    <script src="../js/options.js"></script>
+  </body>
+</html>

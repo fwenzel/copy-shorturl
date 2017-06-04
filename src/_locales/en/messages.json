@@ -10,5 +10,45 @@
   "shorten_error": {
     "message": "ZOMG, error creating short URL.",
     "description": "Error message when shortening URL was unsuccessful."
+  },
+
+  "service_title": {
+    "message": "URL Shortening Service",
+    "description": "Options: Label for selecting which service (is.gd, ...) to use."
+  },
+  "service_custom": {
+    "message": "Custom (specify below)",
+    "description": "Options: Placeholder for custom URL option in dropdown."
+  },
+  "customurl_title": {
+    "message": "Custom URL",
+    "description": "Options: Label for custom URL text field."
+  },
+  "customurl_description": {
+    "message": "use %URL% as placeholder for long URL",
+    "description": "Options: Help text for custom URL."
+  },
+
+  "shorten_canonical_title": {
+    "message": "Shorten canonical URL if longer than",
+    "description": "Options: Label for maximum URL length before forcing shortening."
+  },
+  "shorten_canonical_description": {
+    "message": "Some sites provide canonical \"short URLs\" that aren't short. Use shortening service if they are longer than X characters. (0 = never shorten)",
+    "description": "Options: Help text for forcing shortening of long canonical URLs."
+  },
+
+  "strip_utm_title": {
+    "message": "Remove ?utm_* parameters from URL",
+    "description": "Options: Label for removing known marketing parameters from URLs."
+  },
+  "strip_utm_description": {
+    "message": "Marketing campaigns often add unnecessary ?utm_campaign=something tokens to the URL that are safe to remove.",
+    "description": "Options: Help text for removing known marketing parameters from URL."
+  },
+
+  "toolbar_button_title": {
+    "message": "Enable toolbar button",
+    "description": "Options: Label for enabling a Copy ShortURL tool bar button."
   }
 }

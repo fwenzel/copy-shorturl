@@ -12,43 +12,48 @@ const default_service = 'isgd';
 const serviceUrls = {
   isgd: {
     url: 'https://is.gd/api.php?longurl=%URL%'
+  },
+  tinyurl: {
+    url: 'https://tinyurl.com/api-create.php?url=%URL%'
   }
 }
 
 
-/** Determine service URL */
-function getShorteningService() {
-  // TODO hook up preferences again.
-  return serviceUrls[default_service];
-}
-
 /** Create a short URL from is.gd, tinyurl, etc. */
 function createShortUrl(url) {
   let req;
-  let service = getShorteningService();
 
   try {
-    if (service.request) {
-      req = service.request(url);
-    } else {
-      req = new XMLHttpRequest();
-      let _uri = service.url.replace('%URL%', encodeURIComponent(url));
-      req.open('GET', _uri, true);
-    }
+    // Get shortening service from prefs.
+    browser.storage.local.get('prefs').then((ret) => {
+      let prefs = ret['prefs'] || {};
+      let service = serviceUrls[prefs['service'] || default_service];
 
-    req.addEventListener('error', function(e) {
+      if (service.request) {
+        req = service.request(url);
+      } else {
+        req = new XMLHttpRequest();
+        let _uri = service.url.replace('%URL%', encodeURIComponent(url));
+        req.open('GET', _uri, true);
+      }
+
+      // TODO omg callbacks are so ugly.
+      req.addEventListener('error', function(e) {
+        throw new Error(_('shorten_error'));
+      });
+      req.addEventListener('load', function() {
+        if (req.status === 200) {
+          let result = service.result ? service.result(req) : req.responseText.trim();
+          finalizeUrl(url, result);
+        } else {
+          throw new Error(_('shorten_error'));
+        }
+      });
+
+      req.send(null);
+    }, (err) => {
       throw new Error(_('shorten_error'));
     });
-    req.addEventListener('load', function() {
-      if (req.status === 200) {
-        let result = service.result ? service.result(req) : req.responseText.trim();
-        finalizeUrl(url, result);
-      } else {
-        throw new Error(_('shorten_error'));
-      }
-    });
-
-    req.send(null);
 
   } catch (e) {
     notify(e.message);
