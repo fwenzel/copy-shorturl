@@ -45,10 +45,5 @@
   "strip_utm_description": {
     "message": "Marketing campaigns often add unnecessary ?utm_campaign=something tokens to the URL that are safe to remove.",
     "description": "Options: Help text for removing known marketing parameters from URL."
-  },
-
-  "toolbar_button_title": {
-    "message": "Enable toolbar button",
-    "description": "Options: Label for enabling a Copy ShortURL tool bar button."
   }
 }

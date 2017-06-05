@@ -31,6 +31,16 @@
       "description": "Copy ShortURL of the current page"
     }
   },
+  "browser_action": {
+    "default_icon": {
+      "16": "data/img/icon-16.png",
+      "32": "data/img/icon-32.png",
+      "48": "data/img/icon-48.png",
+      "64": "data/img/icon-64.png"
+    },
+    "default_area": "menupanel",
+    "default_title": "Copy ShortURL"
+  },
   "options_ui": {
     "page": "data/html/options.html"
   }

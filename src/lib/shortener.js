@@ -8,6 +8,7 @@ const default_service = 'isgd';
 
 // Specify 'url' for plain-text GET APIs, or request/result for more complex
 // variants. Note: Use asynchronous XHR.
+// Do not forget to add origins to permissions in manifest.
 // TODO add other services back.
 const serviceUrls = {
   isgd: {
@@ -73,25 +74,28 @@ function finalizeUrl(long_url, short_url) {
 export default function processUrl(found_url) {
   let url = found_url['url'];
 
-  // Remove UTM tracking codes (from Google Analytics) if present.
-  if (true) { //  TODO: (prefs.strip_utm) {
-    var parsedUrl = new URL(url);
-    if (/[?&]utm_/.test(parsedUrl.search)) {
-      // Find and delete all utm_ tracking parameters.
-      var utm_match = /[?&](utm_[^=]+)=/;
-      var utm_param;
-      while (utm_param = utm_match.exec(parsedUrl.search)) {
-        parsedUrl.searchParams.delete(utm_param[1]);
-      }
-      url = parsedUrl.toString();
-    }
-  }
+  browser.storage.local.get('prefs').then((ret) => {
+    let prefs = ret['prefs'] || {};
 
-  // Shorten URL if it's not considered "short" or exceeds length limit.
-  if (!found_url['short']) { //TODO ||
-    //(prefs.shorten_canonical > 0 && url.length > prefs.shorten_canonical)) {
-    createShortUrl(url);
-  } else {
-    finalizeUrl(null, url);
-  }
+    // Remove UTM tracking codes (from Google Analytics) if present.
+    if (prefs.strip_utm) {
+      var parsedUrl = new URL(url);
+      if (/[?&]utm_/.test(parsedUrl.search)) {
+        // Find and delete all utm_ tracking parameters.
+        var utm_match = /[?&](utm_[^=]+)=/;
+        var utm_param;
+        while (utm_param = utm_match.exec(parsedUrl.search)) {
+          parsedUrl.searchParams.delete(utm_param[1]);
+        }
+        url = parsedUrl.toString();
+      }
+    }
+
+    // Shorten URL if it's not considered "short" or exceeds length limit.
+    if (!found_url['short'] || (prefs.shorten_canonical > 0 && url.length > prefs.shorten_canonical)) {
+      createShortUrl(url);
+    } else {
+      finalizeUrl(null, url);
+    }
+  });
 }

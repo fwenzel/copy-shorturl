@@ -5,10 +5,10 @@
 [x] notify on success
 [x] context menu on links
 [x] accel-shift-l shortcut
-[ ] toolbar button (with pref?)
+[x] toolbar button (no pref)
 [x] strip urm_ crap
 [x] prefs: choose shortener
-[ ] prefs: use custom shortener URI
-[ ] prefs: urm_
-[ ] i18n throughout
+[x] prefs: use custom shortener URI
+[x] prefs: urm_
+[x] i18n throughout
 [ ] chrome compat

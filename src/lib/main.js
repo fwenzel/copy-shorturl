@@ -3,7 +3,7 @@ import processUrl from './shortener';
 const _ = browser.i18n.getMessage;
 
 
-/** Add context menus */
+/** Add context menus and toolbar button. */
 // per-page
 browser.contextMenus.create({
   id: 'shorten-page',
@@ -17,6 +17,9 @@ browser.contextMenus.create({
   title: _('shorten_link_label'),
   contexts: ['link']
 });
+
+// Toolbar button.
+browser.browserAction.onClicked.addListener(discoverUrl);
 
 
 /** Process content menu clicks */

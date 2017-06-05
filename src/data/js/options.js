@@ -14,10 +14,6 @@ const options = {
   strip_urm: {
     attr: 'checked',
     def: true
-  },
-  toolbar_button: {
-    attr: 'checked',
-    def: false
   }
 }
 
