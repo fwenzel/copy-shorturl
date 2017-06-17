@@ -17,13 +17,20 @@
         <select id="service">
          <option value="isgd">is.gd (https://is.gd/abcde)</option>
          <option value="tinyurl">tinyurl.com (http://tinyurl.com/abcde)</option>
-         <!--TODO: fix <option value="googl">goo.gl (http://goo.gl/abcde)</option>-->
+         <option value="googl">goo.gl (http://goo.gl/abcde)</option>
          <!--TODO: enable <option value="custom" data-i18n="service_custom">custom</option>-->
         </select>
       </p>
 
+      <!-- Google API key -->
+      <p id="googl_details" style="display:none">
+        <label for="google_apikey" data-i18n="google_apikey_title">google api key</label>
+        <input type="text" id="google_apikey">
+        <a href="https://developers.google.com/url-shortener/v1/getting_started#APIKey"><em data-i18n="google_apikey_description">acquire API key</em></a>
+      </p>
+
       <!-- custom URL + documentation link -->
-      <p style="display:none">
+      <p id="custom_details" style="display:none">
         <label for="custom_url" data-i18n="customurl_title">custom url</label>
         <input type="text" id="custom_url">
         <em data-i18n="customurl_description">%URL%</em>

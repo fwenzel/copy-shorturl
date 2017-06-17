@@ -3,6 +3,10 @@ const options = {
     attr: 'value',
     def: 'isgd'
   },
+  google_apikey: {
+    attr: 'value',
+    def: ''
+  },
   custom_url: {
     attr: 'value',
     def: ''
@@ -30,6 +34,19 @@ function init() {
       let val = (typeof currentPrefs[id] !== 'undefined') ? currentPrefs[id] : options[id].def;
       document.getElementById(id)[options[id].attr] = val;
     });
+
+    showHideDetails();
+  });
+
+  document.querySelector('#service').addEventListener('change', showHideDetails);
+}
+
+function showHideDetails() {
+  // Show / hide details depending on service selection.
+  let selected = document.querySelector('#service').value;
+
+  ['googl', 'custom'].forEach(service => {
+    document.querySelector('#' + service + '_details').style.display = (selected === service) ? 'block': 'none';
   });
 }
 

@@ -9,3 +9,4 @@ docs/_static
 docs/_templates
 src/dist
 src/node_modules
+src/web-ext-artifacts

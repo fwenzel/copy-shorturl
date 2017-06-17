@@ -7,17 +7,41 @@ const _ = browser.i18n.getMessage;
 const default_service = 'isgd';
 
 // Specify 'url' for plain-text GET APIs, or request/result for more complex
-// variants. Note: Use asynchronous XHR.
+// variants. Note: return a fetch() promise.
 // Do not forget to add origins to permissions in manifest.
-// TODO add other services back.
 const serviceUrls = {
   isgd: {
     url: 'https://is.gd/api.php?longurl=%URL%'
   },
   tinyurl: {
     url: 'https://tinyurl.com/api-create.php?url=%URL%'
-  }
-}
+  },
+  googl: {
+    // https://developers.google.com/url-shortener/v1/getting_started
+    request: url => {
+      return browser.storage.local.get('prefs').then(ret => {
+        let prefs = ret['prefs'] || {};
+        if (prefs.google_apikey) {
+          let headers = new Headers({
+            'Content-Type': 'application/json'
+          });
+          return fetch('https://www.googleapis.com/urlshortener/v1/url?key=' +
+                       prefs.google_apikey, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify({ longUrl: url })
+          });
+        }
+        throw new Error(_('apikey_error'));
+      });
+    },
+    result: response => {
+      return response.text().then(txt => {
+        let shortened = JSON.parse(txt);
+        return shortened.id;
+      })
+    }
+}}
 
 
 /** Create a short URL from is.gd, tinyurl, etc. */
@@ -26,33 +50,29 @@ function createShortUrl(url) {
 
   try {
     // Get shortening service from prefs.
-    browser.storage.local.get('prefs').then((ret) => {
+    browser.storage.local.get('prefs').then(ret => {
       let prefs = ret['prefs'] || {};
       let service = serviceUrls[prefs['service'] || default_service];
 
       if (service.request) {
         req = service.request(url);
       } else {
-        req = new XMLHttpRequest();
         let _uri = service.url.replace('%URL%', encodeURIComponent(url));
-        req.open('GET', _uri, true);
+        req = fetch(_uri);
       }
 
-      // TODO omg callbacks are so ugly.
-      req.addEventListener('error', function(e) {
-        throw new Error(_('shorten_error'));
-      });
-      req.addEventListener('load', function() {
-        if (req.status === 200) {
-          let result = service.result ? service.result(req) : req.responseText.trim();
-          finalizeUrl(url, result);
+      req.then(response => {
+        if (response.ok) {
+          let result = service.result ? service.result(response) : response.text();
+          return result;
         } else {
           throw new Error(_('shorten_error'));
         }
+      }).then(result => {
+        finalizeUrl(url, result);
       });
 
-      req.send(null);
-    }, (err) => {
+    }, err => {
       throw new Error(_('shorten_error'));
     });
 
@@ -74,7 +94,7 @@ function finalizeUrl(long_url, short_url) {
 export default function processUrl(found_url) {
   let url = found_url['url'];
 
-  browser.storage.local.get('prefs').then((ret) => {
+  browser.storage.local.get('prefs').then(ret => {
     let prefs = ret['prefs'] || {};
 
     // Remove UTM tracking codes (from Google Analytics) if present.

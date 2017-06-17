@@ -20,7 +20,8 @@
     "storage",
 
     "https://is.gd/*",
-    "https://tinyurl.com/*"
+    "https://tinyurl.com/*",
+    "https://www.googleapis.com/*"
   ],
   "background": {
     "scripts": ["dist/bundle.js"]

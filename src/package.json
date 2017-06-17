@@ -1,7 +1,7 @@
 {
   "name": "copy-shorturl",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack && web-ext build --ignore-files lib/ webpack.*",
     "watch": "webpack -w"
   },
   "devDependencies": {
