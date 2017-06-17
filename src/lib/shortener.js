@@ -52,7 +52,12 @@ function createShortUrl(url) {
     // Get shortening service from prefs.
     browser.storage.local.get('prefs').then(ret => {
       let prefs = ret['prefs'] || {};
-      let service = serviceUrls[prefs['service'] || default_service];
+      let service;
+      if (prefs['service'] === 'custom') {
+        service = { url: prefs.custom_url };
+      } else {
+        service = serviceUrls[prefs['service'] || default_service];
+      }
 
       if (service.request) {
         req = service.request(url);
