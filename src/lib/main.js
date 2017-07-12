@@ -1,3 +1,4 @@
+import notify from './notify';
 import processUrl from './shortener';
 
 const _ = browser.i18n.getMessage;
@@ -51,6 +52,12 @@ browser.commands.onCommand.addListener((cmd) => {
 function discoverUrl() {
   browser.tabs.executeScript({
     file: '/data/js/find-short-url.js'
+  }).catch(e => {
+    if (e.message && /Missing host permission for the tab/.test(e.message)) {
+      notify(_('error_host_permission'));
+    } else {
+      throw e;
+    }
   });
 }
 browser.runtime.onMessage.addListener(processUrl);

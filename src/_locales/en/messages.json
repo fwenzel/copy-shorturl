@@ -7,6 +7,7 @@
     "message": "Copy ShortURL for this link",
     "description": "Context menu item label text for link."
   },
+
   "shorten_error": {
     "message": "ZOMG, error creating short URL.",
     "description": "Error message when shortening URL was unsuccessful."
@@ -14,6 +15,10 @@
   "apikey_error": {
     "message": "No API key in preferences.",
     "description": "Error message when shortening service needs an API key and none was provided."
+  },
+  "error_host_permission": {
+    "message": "Sorry, Copy ShortURL cannot run on pages restricted by the browser.",
+    "description": "Error message when running on about: or addons.mozilla.org."
   },
 
   "service_title": {
