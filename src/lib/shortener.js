@@ -104,12 +104,13 @@ export default function processUrl(found_url) {
 
     // Remove UTM tracking codes (from Google Analytics) if present.
     if (prefs.strip_utm) {
-      var parsedUrl = new URL(url);
+      let parsedUrl = new URL(url);
       if (/[?&]utm_/.test(parsedUrl.search)) {
         // Find and delete all utm_ tracking parameters.
-        var utm_match = /[?&](utm_[^=]+)=/;
-        var utm_param;
-        while (utm_param = utm_match.exec(parsedUrl.search)) {
+        let utm_match = /[?&](utm_[^=]+)=/;
+        while (true) {
+          let utm_param = utm_match.exec(parsedUrl.search);
+          if (!utm_param) break;
           parsedUrl.searchParams.delete(utm_param[1]);
         }
         url = parsedUrl.toString();
