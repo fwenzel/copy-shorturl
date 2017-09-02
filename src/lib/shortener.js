@@ -91,7 +91,12 @@ function createShortUrl(url) {
 /** Finalize (notify and copy to clipboard) a detected or generated URL. */
 function finalizeUrl(long_url, short_url) {
   copyToClipboard(short_url);
-  notify(short_url);
+  browser.storage.local.get('prefs').then(ret => {
+    let prefs = ret['prefs'] || {};
+    if (prefs.notify !== false) {
+      notify(short_url);
+    }
+  });
 }
 
 

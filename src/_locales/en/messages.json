@@ -62,5 +62,14 @@
   "strip_utm_description": {
     "message": "Marketing campaigns often add unnecessary ?utm_campaign=something tokens to the URL that are safe to remove.",
     "description": "Options: Help text for removing known marketing parameters from URL."
+  },
+
+ "notify_title": {
+    "message": "Show notification popup on success",
+    "description": "Options: Label for showing notification popup when URL was generated."
+  },
+  "notify_description": {
+    "message": "Errors will always show a notification.",
+    "description": "Options: Help text for showing notification popup on success."
   }
 }

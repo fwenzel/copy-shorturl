@@ -18,6 +18,10 @@ const options = {
   strip_urm: {
     attr: 'checked',
     def: true
+  },
+  notify: {
+    attr: 'checked',
+    def: true
   }
 }
 
