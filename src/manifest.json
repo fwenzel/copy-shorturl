@@ -3,7 +3,7 @@
   "description": "Detect or create a short URL for the current page.",
   "author": "Fred Wenzel",
   "homepage_url": "http://copy-shorturl.rtfd.org",
-  "version": "4.0.2",
+  "version": "4.1",
   "default_locale": "en",
   "icons": {
     "16": "data/img/icon-16.png",
