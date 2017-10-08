@@ -21,18 +21,19 @@ const serviceUrls = {
     request: url => {
       return browser.storage.local.get('prefs').then(ret => {
         let prefs = ret['prefs'] || {};
-        if (prefs.google_apikey) {
-          let headers = new Headers({
-            'Content-Type': 'application/json'
-          });
-          return fetch('https://www.googleapis.com/urlshortener/v1/url?key=' +
-                       prefs.google_apikey, {
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify({ longUrl: url })
-          });
+        if (!prefs.google_apikey) {
+          throw new Error(_('apikey_error'));
         }
-        throw new Error(_('apikey_error'));
+
+        let headers = new Headers({
+          'Content-Type': 'application/json'
+        });
+        return fetch('https://www.googleapis.com/urlshortener/v1/url?key=' +
+                     prefs.google_apikey, {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify({ longUrl: url })
+        });
       });
     },
     result: response => {
@@ -75,6 +76,8 @@ function createShortUrl(url) {
         }
       }).then(result => {
         finalizeUrl(url, result);
+      }).catch(err => {
+        notify(err.message);
       });
 
     }, err => {
