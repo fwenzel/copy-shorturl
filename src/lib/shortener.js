@@ -42,7 +42,23 @@ const serviceUrls = {
         return shortened.id;
       })
     }
-}}
+  },
+  bitly: {
+    // http://dev.bitly.com/links.html#v3_shorten
+    request: url => {
+      return browser.storage.local.get('prefs').then(ret => {
+        let prefs = ret['prefs'] || {};
+        if (!prefs.bitly_apikey) {
+          throw new Error(_('apikey_error'));
+        }
+
+        return fetch(`https://api-ssl.bitly.com/v3/shorten?access_token=` +
+                     `${prefs.bitly_apikey}&longUrl=${encodeURIComponent(url)}&format=txt`);
+      });
+    },
+    result: response => response.text()
+  }
+}
 
 
 /** Create a short URL from is.gd, tinyurl, etc. */

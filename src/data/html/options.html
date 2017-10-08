@@ -18,6 +18,7 @@
          <option value="isgd">is.gd (https://is.gd/abcde)</option>
          <option value="tinyurl">tinyurl.com (http://tinyurl.com/abcde)</option>
          <option value="googl">goo.gl (http://goo.gl/abcde)</option>
+         <option value="bitly">bit.ly (http://bit.ly/abcde)</option>
          <option value="custom" data-i18n="service_custom">custom</option>
         </select>
       </p>
@@ -27,6 +28,13 @@
         <label for="google_apikey" data-i18n="google_apikey_title">google api key</label>
         <input type="text" id="google_apikey">
         <a href="https://developers.google.com/url-shortener/v1/getting_started#APIKey"><em data-i18n="google_apikey_description">acquire API key</em></a>
+      </p>
+
+      <!-- Bitly API key -->
+      <p id="bitly_details" style="display:none">
+        <label for="bitly_apikey" data-i18n="bitly_apikey_title">bitly api key</label>
+        <input type="text" id="bitly_apikey">
+        <a href="https://bitly.com/a/oauth_apps"><em data-i18n="bitly_apikey_description">acquire API key</em></a>
       </p>
 
       <!-- custom URL + documentation link -->

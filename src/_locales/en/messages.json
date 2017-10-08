@@ -37,6 +37,14 @@
     "message": "Generate an API key with Google",
     "description": "Options: Link to generate Google API key."
   },
+  "bitly_apikey_title": {
+    "message": "Bitly API Key",
+    "description": "Options: Label for Bitly API key text field."
+  },
+  "bitly_apikey_description": {
+    "message": "Generate an API key with Bitly",
+    "description": "Options: Link to generate Bitly API key."
+  },
   "customurl_title": {
     "message": "Custom URL",
     "description": "Options: Label for custom URL text field."
