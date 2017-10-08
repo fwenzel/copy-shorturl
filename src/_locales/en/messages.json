@@ -1,4 +1,16 @@
 {
+  "extensionDescription": {
+    "message": "Detect or create a short URL for the current page.",
+    "description": ""
+  },
+  "extensionName": {
+    "message": "Copy ShortURL",
+    "description": "name of extension"
+  },
+  "browserAction_label": {
+    "message": "Copy ShortURL",
+    "description": "Toolbar button label text."
+  },
   "menuitem_label": {
     "message": "Copy ShortURL",
     "description": "Context menu item label text for page."
@@ -79,5 +91,10 @@
   "notify_description": {
     "message": "Errors will always show a notification.",
     "description": "Options: Help text for showing notification popup on success."
+  },
+
+  "save_button": {
+    "message": "Save",
+    "description": "Options: Button label for save options."
   }
 }
