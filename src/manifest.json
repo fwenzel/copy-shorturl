@@ -19,9 +19,7 @@
     "notifications",
     "storage",
 
-    "https://is.gd/*",
-    "https://tinyurl.com/*",
-    "https://www.googleapis.com/*"
+    "<all_urls>"
   ],
   "background": {
     "scripts": ["dist/bundle.js"]
