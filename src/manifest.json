@@ -5,6 +5,11 @@
   "homepage_url": "http://copy-shorturl.rtfd.org",
   "version": "4.2",
   "default_locale": "en",
+  "applications": {
+    "gecko": {
+      "strict_min_version": "51.0"
+    }
+  },
   "icons": {
     "16": "data/img/icon-16.png",
     "32": "data/img/icon-32.png",
