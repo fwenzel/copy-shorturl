@@ -1,6 +1,6 @@
 {
   "extensionDescription": {
-    "message": "Detect or create a short URL for the current page.",
+    "message": "检测或创建当前页面的短网址。",
     "description": ""
   },
   "extensionName": {
@@ -8,93 +8,93 @@
     "description": "name of extension"
   },
   "browserAction_label": {
-    "message": "Copy ShortURL",
+    "message": "复制短网址",
     "description": "Toolbar button label text."
   },
   "menuitem_label": {
-    "message": "Copy ShortURL",
+    "message": "复制短网址",
     "description": "Context menu item label text for page."
   },
   "shorten_link_label": {
-    "message": "Copy ShortURL for this link",
+    "message": "为此链接复制短网址",
     "description": "Context menu item label text for link."
   },
 
   "shorten_error": {
-    "message": "ZOMG, error creating short URL.",
+    "message": "很抱歉，创建短网址出错。",
     "description": "Error message when shortening URL was unsuccessful."
   },
   "apikey_error": {
-    "message": "No API key in preferences.",
+    "message": "没有在选项中配置 API 键值。",
     "description": "Error message when shortening service needs an API key and none was provided."
   },
   "error_host_permission": {
-    "message": "Sorry, Copy ShortURL cannot run on pages restricted by the browser.",
+    "message": "抱歉，Copy ShortURL 因浏览器限制不能在此页面上运行。",
     "description": "Error message when running on about: or addons.mozilla.org."
   },
 
   "service_title": {
-    "message": "URL Shortening Service",
+    "message": "网址缩短服务",
     "description": "Options: Label for selecting which service (is.gd, ...) to use."
   },
   "service_custom": {
-    "message": "Custom (specify below)",
+    "message": "自定义 (下方指定)",
     "description": "Options: Placeholder for custom URL option in dropdown."
   },
   "google_apikey_title": {
-    "message": "Google API Key",
+    "message": "Google API 键值",
     "description": "Options: Label for Google API key text field."
   },
   "google_apikey_description": {
-    "message": "Generate an API key with Google",
+    "message": "在 Google 上生成 API 键值",
     "description": "Options: Link to generate Google API key."
   },
   "bitly_apikey_title": {
-    "message": "Bitly API Key",
+    "message": "Bitly API 键值",
     "description": "Options: Label for Bitly API key text field."
   },
   "bitly_apikey_description": {
-    "message": "Generate an API key with Bitly",
+    "message": "在 Bitly 上生成 API 键值",
     "description": "Options: Link to generate Bitly API key."
   },
   "customurl_title": {
-    "message": "Custom URL",
+    "message": "自定义网址",
     "description": "Options: Label for custom URL text field."
   },
   "customurl_description": {
-    "message": "use %URL% as placeholder for long URL",
+    "message": "使用 %URL% 作为长（原始）网址的占位符",
     "description": "Options: Help text for custom URL."
   },
 
   "shorten_canonical_title": {
-    "message": "Shorten canonical URL if longer than",
+    "message": "缩短规范的网址，如果字符数超过",
     "description": "Options: Label for maximum URL length before forcing shortening."
   },
   "shorten_canonical_description": {
-    "message": "Some sites provide canonical \"short URLs\" that aren't short. Use shortening service if they are longer than X characters. (0 = never shorten)",
+    "message": "部分网站本身提供不太短的规范短网址。此处指定长度超过 X 个字符时才使用缩短服务 (0 = 此情况不缩短)",
     "description": "Options: Help text for forcing shortening of long canonical URLs."
   },
 
   "strip_utm_title": {
-    "message": "Remove ?utm_* parameters from URL",
+    "message": "移除网址中的 ?utm_* 参数",
     "description": "Options: Label for removing known marketing parameters from URLs."
   },
   "strip_utm_description": {
-    "message": "Marketing campaigns often add unnecessary ?utm_campaign=something tokens to the URL that are safe to remove.",
+    "message": "营销活动经常添加非必要的 ?utm_campaign=something 参数到网址，它可以安全移除。",
     "description": "Options: Help text for removing known marketing parameters from URL."
   },
 
  "notify_title": {
-    "message": "Show notification popup on success",
+    "message": "成功时显示通知",
     "description": "Options: Label for showing notification popup when URL was generated."
   },
   "notify_description": {
-    "message": "Errors will always show a notification.",
+    "message": "发生错误始终会显示通知。",
     "description": "Options: Help text for showing notification popup on success."
   },
 
   "save_button": {
-    "message": "Save",
+    "message": "保存",
     "description": "Options: Button label for save options."
   }
 }
