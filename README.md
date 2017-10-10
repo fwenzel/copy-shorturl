@@ -17,5 +17,7 @@ Copy ShortURL is open source. If you'd like to contribute, feel free to open or 
 
 Pull requests welcome!
 
+A special thank-you to all current and previous [contributors](https://github.com/fwenzel/copy-shorturl/graphs/contributors) to this extension. You're awesome.
+
 ## License
-This is free software, &copy; 2010-2016 Fred Wenzel and licensed under an Apache 2.0 license. For more information, read the file [`LICENSE`](./LICENSE).
+This is free software, &copy; 2010-today Fred Wenzel and licensed under an Apache 2.0 license. For more information, read the file [`LICENSE`](./LICENSE).
