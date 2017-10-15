@@ -105,5 +105,9 @@
  "save_button": {
     "message": "保存",
     "description": "Options: Button label for save options."
+  },
+  "saved_notice": {
+    "message": "Saved!",
+    "description": "Options: Indicator that options were saved."
   }
 }

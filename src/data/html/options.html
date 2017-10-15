@@ -6,6 +6,9 @@
     label[for], p em {
       display: block;
     }
+    #saved {
+      font-weight: bold;
+    }
     </style>
   </head>
 
@@ -72,7 +75,11 @@
         <em data-i18n="copy_title_description">copy page title</em>
       </p>
 
-      <p><button type="submit" data-i18n="save_button">Save</button></p>
+      <p>
+        <button type="submit" data-i18n="save_button">Save</button>
+        <span id="saved" style="display:none" data-i18n="saved_notice">(saved)</span>
+      </p>
+
     </form>
 
     <script src="../js/options.js"></script>

@@ -32,6 +32,8 @@ const options = {
     def: false
   }
 }
+let savedTimeout; // Hide saved indicator after a bit.
+
 
 function init() {
   // Initialize i18n.
@@ -69,7 +71,20 @@ function saveOptions(e) {
   Object.keys(options).forEach((id) => {
     toSave['prefs'][id] = document.getElementById(id)[options[id].attr];
   });
-  browser.storage.local.set(toSave);
+  browser.storage.local.set(toSave).then(() => {
+    // Indicate that we saved succesfully.
+    let saved = document.querySelector('#saved');
+
+    saved.style.display = 'block';
+
+    if (savedTimeout) {
+      clearTimeout(savedTimeout);
+    }
+    savedTimeout = setTimeout(() => {
+      saved.style.display = 'none';
+      savedTimeout = null;
+    }, 3000)
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);
