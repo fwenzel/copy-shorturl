@@ -46,6 +46,7 @@
     "default_title": "__MSG_browserAction_label__"
   },
   "options_ui": {
-    "page": "data/html/options.html"
+    "page": "data/html/options.html",
+    "browser_style": true
   }
 }
