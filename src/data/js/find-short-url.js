@@ -6,10 +6,16 @@ const long_selectors = 'link[rel=canonical], meta[property="og:url"]';
 
 /** Find short URL in the page */
 function findShortUrl() {
-  let short = document.querySelector(short_selectors),
-    link;
+  const title = document.querySelector('title').text;
+  let short = document.querySelector(short_selectors);
+  let link;
+
   if (short && (link = short.href)) {
-    return {short: true, url: link};
+    return {
+      short: true,
+      url: link,
+      title: title
+    };
   } else {
     // Use canonical URL if it exists, else Facebook OpenGraph or finally, document URL.
     let canonical = document.querySelector(long_selectors);
@@ -17,7 +23,11 @@ function findShortUrl() {
     if (!link) {  // Document URL fallback.
       link = document.location.href;
     }
-    return {short: false, url: link};
+    return {
+      short: false,
+      url: link,
+      title: title
+    };
   }
 }
 

@@ -67,10 +67,10 @@ function createShortUrl(url) {
 
   try {
     // Get shortening service from prefs.
-    browser.storage.local.get('prefs').then(ret => {
+    return browser.storage.local.get('prefs').then(ret => {
       let prefs = ret['prefs'] || {};
       let service;
-      if (prefs['service'] === 'custom') {
+      if (prefs.service && prefs.service === 'custom') {
         service = { url: prefs.custom_url };
       } else {
         service = serviceUrls[prefs['service'] || default_service];
@@ -83,20 +83,18 @@ function createShortUrl(url) {
         req = fetch(_uri);
       }
 
-      req.then(response => {
+      return req.then(response => {
         if (response.ok) {
           let result = service.result ? service.result(response) : response.text();
           return result;
         } else {
           throw new Error(_('shorten_error'));
         }
-      }).then(result => {
-        finalizeUrl(url, result);
       }).catch(err => {
         notify(err.message);
       });
 
-    }, err => {
+    }).catch(err => {
       throw new Error(_('shorten_error'));
     });
 
@@ -108,12 +106,20 @@ function createShortUrl(url) {
 
 
 /** Finalize (notify and copy to clipboard) a detected or generated URL. */
-function finalizeUrl(long_url, short_url) {
-  copyToClipboard(short_url);
+function finalizeUrl(longUrl, shortUrl, title) {
   browser.storage.local.get('prefs').then(ret => {
     let prefs = ret['prefs'] || {};
+    let copyText;
+
+    if (prefs.copy_title === true && title) {
+      copyText = title + ' ' + shortUrl;
+    } else {
+      copyText = shortUrl;
+    }
+    copyToClipboard(copyText);
+
     if (prefs.notify !== false) {
-      notify(short_url);
+      notify(shortUrl);
     }
   });
 }
@@ -122,6 +128,7 @@ function finalizeUrl(long_url, short_url) {
 /** Handle a URL found on the page */
 export default function processUrl(found_url) {
   let url = found_url['url'];
+  let title = found_url['title'] || '';
 
   browser.storage.local.get('prefs').then(ret => {
     let prefs = ret['prefs'] || {};
@@ -143,9 +150,11 @@ export default function processUrl(found_url) {
 
     // Shorten URL if it's not considered "short" or exceeds length limit.
     if (!found_url['short'] || (prefs.shorten_canonical > 0 && url.length > prefs.shorten_canonical)) {
-      createShortUrl(url);
+      createShortUrl(url).then(result => {
+        finalizeUrl(url, result, title);
+      });
     } else {
-      finalizeUrl(null, url);
+      finalizeUrl(null, url, title);
     }
   });
 }

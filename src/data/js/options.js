@@ -26,6 +26,10 @@ const options = {
   notify: {
     attr: 'checked',
     def: true
+  },
+  copy_title: {
+    attr: 'checked',
+    def: false
   }
 }
 

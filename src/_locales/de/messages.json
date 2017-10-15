@@ -93,6 +93,15 @@
     "description": "Options: Help text for showing notification popup on success."
   },
 
+ "copy_title_title": {
+    "message": "Seiten-Titel zusammen mit Kurz-URL kopieren",
+    "description": "Options: Label for copying page title along with URL."
+  },
+  "copy_title_description": {
+    "message": "Beispiel: 'So why are Pandas so cute? http://nyti.ms/2xGSRyh'",
+    "description": "Options: Help text for copying page title with URL."
+  },
+
   "save_button": {
     "message": "Speichern",
     "description": "Options: Button label for save options."
