@@ -3,11 +3,9 @@ by Fred Wenzel ``<code@wenzel.io>``
 
 ![](./copy-shorturl.png)
 
-Copy ShortURL is a Firefox add-on. It allows you to copy a short URL for the
-page you are currently visiting to your clipboard at the click of a button.
+Copy ShortURL is a Firefox add-on. It allows you to copy a short URL for the page you are currently visiting to your clipboard at the click of a button.
 
-[Full documentation](http://copy-shorturl.rtfd.org) is available on
-readthedocs.
+[Full documentation](http://copy-shorturl.rtfd.org) is available on readthedocs.
 
 ## Installing
 Copy ShortURL is available on the [Mozilla Add-ons website](https://addons.mozilla.org/addon/copy-shorturl/). You can install it with Firefox by simply pressing the Install button there.
