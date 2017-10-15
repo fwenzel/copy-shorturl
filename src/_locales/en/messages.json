@@ -50,7 +50,7 @@
     "description": "Options: Link to generate Google API key."
   },
   "bitly_apikey_title": {
-    "message": "Bitly API Key",
+    "message": "Bitly Generic Access Token",
     "description": "Options: Label for Bitly API key text field."
   },
   "bitly_apikey_description": {
