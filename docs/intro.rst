@@ -4,8 +4,13 @@ This is a Firefox add-on built with the `Jetpack SDK
 <https://jetpack.mozillalabs.com/>`_.
 
 On any webpage, this jetpack adds a new item in the right click menu called
-“copy short URL”. When you click it, the add-on looks for a canonical short
-URL exposed in the page header. Currently, a number of major websites
+“copy short URL”. One can also add a clickable item to the
+toolbar (right click on the tool bar and select "Customize..."). Upon
+clicking either, the add-on looks for a canonical short URL exposed in the
+page header. One can also active the creation of a short URL by using the
+keyboard shortcut, `Ctrl+Shift+L`.
+
+Currently, a number of major websites
 expose their own short URLs for any entry on their webpages, among these:
 
 * youtube (“youtu.be/…”),
