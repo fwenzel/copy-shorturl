@@ -18,11 +18,12 @@
       <p>
         <label for="service" data-i18n="service_title">service</label>
         <select id="service">
-         <option value="isgd">is.gd (https://is.gd/abcde)</option>
-         <option value="tinyurl">tinyurl.com (http://tinyurl.com/abcde)</option>
-         <option value="googl">goo.gl (http://goo.gl/abcde)</option>
-         <option value="bitly">bit.ly (http://bit.ly/abcde)</option>
-         <option value="custom" data-i18n="service_custom">custom</option>
+          <option value="none" data-i18n="service_none">none</option>
+          <option value="isgd">is.gd (https://is.gd/abcde)</option>
+          <option value="tinyurl">tinyurl.com (http://tinyurl.com/abcde)</option>
+          <option value="googl">goo.gl (http://goo.gl/abcde)</option>
+          <option value="bitly">bit.ly (http://bit.ly/abcde)</option>
+          <option value="custom" data-i18n="service_custom">custom</option>
         </select>
       </p>
 
@@ -48,7 +49,7 @@
       </p>
 
       <!-- shorten canconical -->
-      <p>
+      <p id="always_shorten">
         <label for="shorten_canonical" data-i18n="shorten_canonical_title">Max len</label>
         <input type="number" id="shorten_canonical" min="0" value="0">
         <em data-i18n="shorten_canonical_description">0 = never</em>

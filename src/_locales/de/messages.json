@@ -37,6 +37,10 @@
     "message": "Kurz-URL-Service",
     "description": "Options: Label for selecting which service (is.gd, ...) to use."
   },
+  "service_none": {
+    "message": "(Kein externer Service)",
+    "description": "Options: No shortening service, copy found short URL or full URL only."
+  },
   "service_custom": {
     "message": "Benutzerdefiniert (unten angeben)",
     "description": "Options: Placeholder for custom URL option in dropdown."

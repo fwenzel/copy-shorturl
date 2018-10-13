@@ -37,6 +37,10 @@
     "message": "网址缩短服务",
     "description": "Options: Label for selecting which service (is.gd, ...) to use."
   },
+  "service_none": {
+    "message": "(No external service)",
+    "description": "Options: No shortening service, copy found short URL or full URL only."
+  },
   "service_custom": {
     "message": "自定义 (下方指定)",
     "description": "Options: Placeholder for custom URL option in dropdown."

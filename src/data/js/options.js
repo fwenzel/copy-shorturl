@@ -62,6 +62,9 @@ function showHideDetails() {
   ['googl', 'bitly', 'custom'].forEach(service => {
     document.querySelector('#' + service + '_details').style.display = (selected === service) ? 'block': 'none';
   });
+
+  // Max canonical URL length makes no sense with no shortening service.
+  document.querySelector('#always_shorten').style.display = (selected === 'none') ? 'none': 'block';
 }
 
 function saveOptions(e) {

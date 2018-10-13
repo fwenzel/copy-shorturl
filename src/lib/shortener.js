@@ -10,6 +10,7 @@ const default_service = 'isgd';
 // variants. Note: return a fetch() promise.
 // Do not forget to add origins to permissions in manifest.
 const serviceUrls = {
+  none: {}, // Placeholder.
   isgd: {
     url: 'https://is.gd/api.php?longurl=%URL%'
   },
@@ -70,10 +71,15 @@ function createShortUrl(url) {
     return browser.storage.local.get('prefs').then(ret => {
       let prefs = ret['prefs'] || {};
       let service;
-      if (prefs.service && prefs.service === 'custom') {
-        service = { url: prefs.custom_url };
-      } else {
-        service = serviceUrls[prefs['service'] || default_service];
+      switch (prefs.service) {
+        case 'custom':
+          service = { url: prefs.custom_url };
+          break;
+        case 'none':
+          return url;  // Skip shortening altogether.
+        default:
+          service = serviceUrls[prefs['service'] || default_service];
+          break;
       }
 
       if (service.request) {
