@@ -117,6 +117,9 @@ function finalizeUrl(longUrl, shortUrl, title) {
     let prefs = ret['prefs'] || {};
     let copyText;
 
+    // Remove whitespace from final URL.
+    shortUrl = shortUrl.trim();
+
     // Add page title, if selected.
     if (prefs.copy_title === true && title) {
       copyText = title + ' ' + shortUrl;
