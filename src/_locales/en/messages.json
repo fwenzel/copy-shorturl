@@ -88,6 +88,15 @@
     "description": "Options: Help text for removing known marketing parameters from URL."
   },
 
+  "keep_hash_title": {
+    "message": "Keep #hash in final URL",
+    "description": "Options: Label for keeping URL #hash if present."
+  },
+  "keep_hash_description": {
+    "message": "Add #hash part of mysite.com/page#hash back to shortened URL.",
+    "description": "Options: Help text for keeping URL #hash if present."
+  },
+
  "notify_title": {
     "message": "Show notification popup on success",
     "description": "Options: Label for showing notification popup when URL was generated."

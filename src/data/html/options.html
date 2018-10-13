@@ -6,6 +6,13 @@
     label[for], p em {
       display: block;
     }
+    input[type=checkbox] {
+      float: left;
+      margin-right: 1em;
+    }
+    p {
+      margin-bottom: 2em;
+    }
     #saved {
       font-weight: bold;
     }
@@ -60,6 +67,13 @@
         <input type="checkbox" id="strip_urm">
         <label for="strip_urm" data-i18n="strip_utm_title">strip urm</label>
         <em data-i18n="strip_utm_description">urm marketing parameters</em>
+      </p>
+
+      <!-- add #hash if present -->
+      <p>
+        <input type="checkbox" id="keep_hash">
+        <label for="keep_hash" data-i18n="keep_hash_title">keep hash</label>
+        <em data-i18n="keep_hash_description">url #hash</em>
       </p>
 
       <!-- show notification? -->

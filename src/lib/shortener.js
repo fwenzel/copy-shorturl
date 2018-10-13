@@ -117,6 +117,7 @@ function finalizeUrl(longUrl, shortUrl, title) {
     let prefs = ret['prefs'] || {};
     let copyText;
 
+    // Add page title, if selected.
     if (prefs.copy_title === true && title) {
       copyText = title + ' ' + shortUrl;
     } else {
@@ -135,13 +136,15 @@ function finalizeUrl(longUrl, shortUrl, title) {
 export default function processUrl(found_url) {
   let url = found_url['url'];
   let title = found_url['title'] || '';
+  let hash = found_url['hash'] || '';
 
   browser.storage.local.get('prefs').then(ret => {
     let prefs = ret['prefs'] || {};
 
-    // Remove UTM tracking codes (from Google Analytics) if present.
-    if (prefs.strip_utm) {
+    if (prefs.strip_urm || prefs.keep_hash) {
       let parsedUrl = new URL(url);
+
+      // Remove UTM tracking codes (from Google Analytics) if present.
       if (/[?&]utm_/.test(parsedUrl.search)) {
         // Find and delete all utm_ tracking parameters.
         let utm_match = /[?&](utm_[^=]+)=/;
@@ -150,8 +153,14 @@ export default function processUrl(found_url) {
           if (!utm_param) break;
           parsedUrl.searchParams.delete(utm_param[1]);
         }
-        url = parsedUrl.toString();
       }
+
+      // Keep URL hash if present.
+      if (prefs.keep_hash && hash) {
+        parsedUrl.hash = hash;
+      }
+
+      url = parsedUrl.toString();
     }
 
     // Shorten URL if it's not considered "short" or exceeds length limit.

@@ -23,6 +23,10 @@ const options = {
     attr: 'checked',
     def: true
   },
+  keep_hash: {
+    attr: 'checked',
+    def: false
+  },
   notify: {
     attr: 'checked',
     def: true
