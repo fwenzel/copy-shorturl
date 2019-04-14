@@ -1,13 +1,13 @@
 const _ = browser.i18n.getMessage;
 
-const addon_name = 'Copy ShortURL';
+const manifest = browser.runtime.getManifest();
 const addon_icon = browser.extension.getURL('data/img/icon.svg');
 
 
 export default function notify(txt) {
   browser.notifications.create({
     type: 'basic',
-    title: addon_name,
+    title: manifest.name,
     message: txt,
     iconUrl: addon_icon
   })
