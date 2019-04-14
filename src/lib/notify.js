@@ -1,7 +1,7 @@
 const _ = browser.i18n.getMessage;
 
 const addon_name = 'Copy ShortURL';
-const addon_icon32 = browser.extension.getURL('data/img/icon-32.png');
+const addon_icon = browser.extension.getURL('data/img/icon.svg');
 
 
 export default function notify(txt) {
@@ -9,6 +9,6 @@ export default function notify(txt) {
     type: 'basic',
     title: addon_name,
     message: txt,
-    iconUrl: addon_icon32
+    iconUrl: addon_icon
   })
 }
