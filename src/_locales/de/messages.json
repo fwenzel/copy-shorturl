@@ -19,6 +19,10 @@
     "message": "Kurz-URL für diesen Link kopieren",
     "description": "Context menu item label text for link."
   },
+  "shorten_img_label": {
+    "message": "Kurz-URL für dieses Bild kopieren",
+    "description": "Context menu item label text for image."
+  },
 
   "shorten_error": {
     "message": "Oh-oh, Fehler beim Erstellen der Kurz-URL.",

@@ -19,6 +19,10 @@
     "message": "为此链接复制短网址",
     "description": "Context menu item label text for link."
   },
+  "shorten_img_label": {
+    "message": "Copy ShortURL for this image",
+    "description": "Context menu item label text for image."
+  },
 
   "shorten_error": {
     "message": "很抱歉，创建短网址出错。",
