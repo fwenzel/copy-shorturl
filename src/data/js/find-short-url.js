@@ -2,7 +2,7 @@
 // Site-defined *short* URLs.
 const short_selectors = 'link[rev=canonical],link[rel=shorturl],link[rel=shortlink]';
 // Site-defined *long* URLs.
-const long_selectors = 'link[rel=canonical], meta[property="og:url"]';
+const long_selectors = 'link[rel=canonical]';
 
 /** Find short URL in the page */
 function findShortUrl() {
