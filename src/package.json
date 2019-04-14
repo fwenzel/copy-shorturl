@@ -8,6 +8,7 @@
     "webpack": "^2.6.1"
   },
   "dependencies": {
-    "npm": "^6.4.1"
+    "npm": "^6.4.1",
+    "web-ext": "^3.0.0"
   }
 }
