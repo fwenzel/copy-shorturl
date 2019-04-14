@@ -45,14 +45,6 @@
     "message": "Custom (specify below)",
     "description": "Options: Placeholder for custom URL option in dropdown."
   },
-  "google_apikey_title": {
-    "message": "Google API Key",
-    "description": "Options: Label for Google API key text field."
-  },
-  "google_apikey_description": {
-    "message": "Generate an API key with Google",
-    "description": "Options: Link to generate Google API key."
-  },
   "bitly_apikey_title": {
     "message": "Bitly Generic Access Token",
     "description": "Options: Label for Bitly API key text field."

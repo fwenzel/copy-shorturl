@@ -17,33 +17,6 @@ const serviceUrls = {
   tinyurl: {
     url: 'https://tinyurl.com/api-create.php?url=%URL%'
   },
-  googl: {
-    // https://developers.google.com/url-shortener/v1/getting_started
-    request: url => {
-      return browser.storage.local.get('prefs').then(ret => {
-        let prefs = ret['prefs'] || {};
-        if (!prefs.google_apikey) {
-          throw new Error(_('apikey_error'));
-        }
-
-        let headers = new Headers({
-          'Content-Type': 'application/json'
-        });
-        return fetch('https://www.googleapis.com/urlshortener/v1/url?key=' +
-                     prefs.google_apikey, {
-          method: 'POST',
-          headers: headers,
-          body: JSON.stringify({ longUrl: url })
-        });
-      });
-    },
-    result: response => {
-      return response.text().then(txt => {
-        let shortened = JSON.parse(txt);
-        return shortened.id;
-      })
-    }
-  },
   bitly: {
     // http://dev.bitly.com/links.html#v3_shorten
     request: url => {

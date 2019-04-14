@@ -3,10 +3,6 @@ const options = {
     attr: 'value',
     def: 'isgd'
   },
-  google_apikey: {
-    attr: 'value',
-    def: ''
-  },
   bitly_apikey: {
     attr: 'value',
     def: ''
@@ -63,7 +59,7 @@ function showHideDetails() {
   // Show / hide details depending on service selection.
   let selected = document.querySelector('#service').value;
 
-  ['googl', 'bitly', 'custom'].forEach(service => {
+  ['bitly', 'custom'].forEach(service => {
     document.querySelector('#' + service + '_details').style.display = (selected === service) ? 'block': 'none';
   });
 
