@@ -15,7 +15,8 @@ const serviceUrls = {
     url: 'https://is.gd/api.php?longurl=%URL%'
   },
   tinyurl: {
-    url: 'https://tinyurl.com/api-create.php?url=%URL%'
+    url: 'https://tinyurl.com/api-create.php?url=%URL%',
+    force_https: true
   },
   bitly: {
     // http://dev.bitly.com/links.html#v3_shorten
@@ -30,7 +31,8 @@ const serviceUrls = {
                      `${prefs.bitly_apikey}&longUrl=${encodeURIComponent(url)}&format=txt`);
       });
     },
-    result: response => response.text()
+    result: response => response.text(),
+    force_https: true
   }
 }
 
@@ -69,6 +71,14 @@ function createShortUrl(url) {
         } else {
           throw new Error(_('shorten_error'));
         }
+      }).then(url => {
+        // Rewrite shortened URL to https if the service requires it.
+        if (service.force_https || false) {
+          let parsedUrl = new URL(url);
+          parsedUrl.protocol = 'https';
+          url = parsedUrl.href;
+        }
+        return url;
       }).catch(err => {
         notify(err.message);
       });
