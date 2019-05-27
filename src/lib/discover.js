@@ -34,6 +34,12 @@ export default function discoverUrl() {
       // Trigger special URL logic for certain origins.
       // Most the time, just generically discover URLs.
       switch (prefs.use_special !== false) {  // Will never match if preffed off.
+        case /(www\.)amazon\.com/.test(url.hostname):
+          browser.tabs.executeScript({
+            file: '/data/js/discover/amazon.js'
+          });
+          break;
+
         case /(www\.)youtube\.com/.test(url.hostname):
           browser.tabs.executeScript({
             file: '/data/js/discover/youtube.js'
