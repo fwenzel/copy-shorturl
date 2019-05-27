@@ -24,23 +24,26 @@ function genericDiscovery() {
  */
 export default function discoverUrl() {
   // browser.tabs.getCurrent()
-  browser.tabs.query({active: true, currentWindow: true})
-  .then(tabs => {
-    const url = new URL(tabs[0].url);
+  browser.storage.local.get('prefs').then(ret => {
+    const prefs = ret['prefs'] || {};
 
-    // TODO only trigger special URL logic if pref
-    // Trigger special URL logic for certain origins.
-    // Most the time, just generically discover URLs.
-    switch (true) {
-      case /(www\.)youtube\.com/.test(url.hostname):
-        browser.tabs.executeScript({
-          file: '/data/js/discover/youtube.js'
-        });
-        break;
+    browser.tabs.query({active: true, currentWindow: true})
+    .then(tabs => {
+      const url = new URL(tabs[0].url);
 
-      default:
-        genericDiscovery();
-    }
+      // Trigger special URL logic for certain origins.
+      // Most the time, just generically discover URLs.
+      switch (prefs.use_special !== false) {  // Will never match if preffed off.
+        case /(www\.)youtube\.com/.test(url.hostname):
+          browser.tabs.executeScript({
+            file: '/data/js/discover/youtube.js'
+          });
+          break;
+
+        default:
+          genericDiscovery();
+      }
+    });
   });
 }
 

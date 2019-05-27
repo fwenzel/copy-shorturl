@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8">
     <style>
+    body {
+      background-color: white;
+      padding: 1em;
+    }
     label[for], p em {
       display: block;
     }
@@ -21,7 +25,7 @@
 
   <body>
     <form>
-      <!-- service -->
+      <!-- Shortening service -->
       <p>
         <label for="service" data-i18n="service_title">service</label>
         <select id="service">
@@ -40,42 +44,49 @@
         <a href="https://bitly.com/a/oauth_apps"><em data-i18n="bitly_apikey_description">acquire API key</em></a>
       </p>
 
-      <!-- custom URL + documentation link -->
+      <!-- Custom URL + documentation link -->
       <p id="custom_details" style="display:none">
         <label for="custom_url" data-i18n="customurl_title">custom url</label>
         <input type="text" id="custom_url">
         <em data-i18n="customurl_description">%URL%</em>
       </p>
 
-      <!-- shorten canconical -->
+      <!-- Shorten canconical -->
       <p id="always_shorten">
         <label for="shorten_canonical" data-i18n="shorten_canonical_title">Max len</label>
         <input type="number" id="shorten_canonical" min="0" value="0">
         <em data-i18n="shorten_canonical_description">0 = never</em>
       </p>
 
-      <!-- strip urm -->
+      <!-- Use special? -->
+      <p>
+        <input type="checkbox" id="use_special">
+        <label for="use_special" data-i18n="use_special_title">use special?</label>
+        <em data-i18n="use_special_description">youtu.be</em>
+      </p>
+
+      <!-- Strip utm (note, misspelled as urm, oops) -->
       <p>
         <input type="checkbox" id="strip_urm">
-        <label for="strip_urm" data-i18n="strip_utm_title">strip urm</label>
+        <label for="strip_urm" data-i18n="strip_utm_title">strip utm</label>
         <em data-i18n="strip_utm_description">urm marketing parameters</em>
       </p>
 
-      <!-- add #hash if present -->
+      <!-- Add #hash if present -->
       <p>
         <input type="checkbox" id="keep_hash">
         <label for="keep_hash" data-i18n="keep_hash_title">keep hash</label>
         <em data-i18n="keep_hash_description">url #hash</em>
       </p>
 
-      <!-- show notification? -->
+      <!-- Show notification? -->
       <p>
         <input type="checkbox" id="notify">
         <label for="notify" data-i18n="notify_title">notify?</label>
         <em data-i18n="notify_description">notify on URL</em>
       </p>
 
-      <!-- copy title + URL or just URL? -->
+      <!-- Copy title + URL or just URL? -->
       <p>
         <input type="checkbox" id="copy_title">
         <label for="copy_title" data-i18n="copy_title_title">copy title?</label>

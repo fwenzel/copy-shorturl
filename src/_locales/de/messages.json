@@ -75,6 +75,15 @@
     "description": "Options: Help text for forcing shortening of long canonical URLs."
   },
 
+  "use_special_title": {
+    "message": "Besondere URL-Formate für bekannte Seiten verwenden",
+    "description": "Options: Label for using youtu.be and other special known short URLs."
+  },
+  "use_special_description": {
+    "message": "Manche Seiten haben spezielle Kurz-URLs, z.B. youtu.be.",
+    "description": "Options: Help text for using special shortening cases."
+  },
+
   "strip_utm_title": {
     "message": "?utm_* Parameter aus der URL entfernen",
     "description": "Options: Label for removing known marketing parameters from URLs."
