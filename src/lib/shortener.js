@@ -22,7 +22,7 @@ const serviceUrls = {
     // http://dev.bitly.com/links.html#v3_shorten
     request: url => {
       return browser.storage.local.get('prefs').then(ret => {
-        let prefs = ret['prefs'] || {};
+        const prefs = ret['prefs'] || {};
         if (!prefs.bitly_apikey) {
           throw new Error(_('apikey_error'));
         }
@@ -33,28 +33,48 @@ const serviceUrls = {
     },
     result: response => response.text(),
     force_https: true
-  }
+  },
+
+  /* Special services: Cannot be chosen manually. */
+  gitio: {
+    // https://github.blog/2011-11-10-git-io-github-url-shortener/
+    request: url => fetch('https://git.io/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'manual',
+        body: `url=${encodeURIComponent(url)}`
+      }),
+      result: response => response.headers.get('Location'),
+  },
 }
 
 
 /** Create a short URL from is.gd, tinyurl, etc. */
-function createShortUrl(url) {
+function createShortUrl(url, force_service) {
   let req;
 
   try {
     // Get shortening service from prefs.
     return browser.storage.local.get('prefs').then(ret => {
-      let prefs = ret['prefs'] || {};
+      const prefs = ret['prefs'] || {};
       let service;
-      switch (prefs.service) {
-        case 'custom':
-          service = { url: prefs.custom_url };
-          break;
-        case 'none':
-          return url;  // Skip shortening altogether.
-        default:
-          service = serviceUrls[prefs['service'] || default_service];
-          break;
+
+      // Hardcoded special-cased websites can enforce a shortening service.
+      if (prefs.service !== 'none' && force_service) {
+        service = serviceUrls[force_service];
+      } else {
+        switch (prefs.service) {
+          case 'custom':
+            service = { url: prefs.custom_url };
+            break;
+          case 'none':
+            return url;  // Skip shortening altogether.
+          default:
+            service = serviceUrls[prefs['service'] || default_service];
+            break;
+        }
       }
 
       if (service.request) {
@@ -84,6 +104,7 @@ function createShortUrl(url) {
       });
 
     }).catch(err => {
+      console.log(err.message);
       throw new Error(_('shorten_error'));
     });
 
@@ -97,7 +118,7 @@ function createShortUrl(url) {
 /** Finalize (notify and copy to clipboard) a detected or generated URL. */
 function finalizeUrl(longUrl, shortUrl, title) {
   browser.storage.local.get('prefs').then(ret => {
-    let prefs = ret['prefs'] || {};
+    const prefs = ret['prefs'] || {};
     let copyText;
 
     // Remove whitespace from final URL.
@@ -125,7 +146,7 @@ export default function processUrl(found_url) {
   let hash = found_url['hash'] || '';
 
   browser.storage.local.get('prefs').then(ret => {
-    let prefs = ret['prefs'] || {};
+    const prefs = ret['prefs'] || {};
 
     if (prefs.strip_urm || prefs.keep_hash) {
       let parsedUrl = new URL(url);
@@ -151,9 +172,8 @@ export default function processUrl(found_url) {
 
     // Shorten URL if it's not considered "short" or exceeds length limit.
     if (!found_url['short'] || (prefs.shorten_canonical > 0 && url.length > prefs.shorten_canonical)) {
-      createShortUrl(url).then(result => {
-        finalizeUrl(url, result, title);
-      });
+      createShortUrl(url, found_url['force_service'])
+      .then(result => finalizeUrl(url, result, title));
     } else {
       finalizeUrl(null, url, title);
     }
