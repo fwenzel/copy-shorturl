@@ -1,7 +1,6 @@
 \.DS_Store
 \.project
 \.settings
-package-lock\.json
 xpi/
 *\.xpi
 *\.backup
