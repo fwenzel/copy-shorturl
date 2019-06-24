@@ -148,13 +148,13 @@ export default function processUrl(found_url) {
   browser.storage.local.get('prefs').then(ret => {
     const prefs = ret['prefs'] || {};
 
-    if (prefs.strip_urm || prefs.keep_hash) {
+    if (prefs.strip_urm !== false || prefs.keep_hash !== false) {
       let parsedUrl = new URL(url);
 
       // Remove UTM tracking codes (from Google Analytics) if present.
-      if (/[?&]utm_/.test(parsedUrl.search)) {
+      if (prefs.strip_urm !== false && /[?&]utm_/.test(parsedUrl.search)) {
         // Find and delete all utm_ tracking parameters.
-        let utm_match = /[?&](utm_[^=]+)=/;
+        const utm_match = /[?&](utm_[^=]+)=/;
         while (true) {
           let utm_param = utm_match.exec(parsedUrl.search);
           if (!utm_param) break;
@@ -163,7 +163,7 @@ export default function processUrl(found_url) {
       }
 
       // Keep URL hash if present.
-      if (prefs.keep_hash && hash) {
+      if (prefs.keep_hash !== false && hash) {
         parsedUrl.hash = hash;
       }
 
