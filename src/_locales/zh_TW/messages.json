@@ -1,0 +1,131 @@
+{
+  "extensionDescription": {
+    "message": "偵測或建立目前頁面的縮址。",
+    "description": "Detect or create a short URL for the current page."
+  },
+  "extensionName": {
+    "message": "Copy ShortURL",
+    "description": "name of extension"
+  },
+  "browserAction_label": {
+    "message": "複製縮址",
+    "description": "Toolbar button label text."
+  },
+  "menuitem_label": {
+    "message": "複製縮址",
+    "description": "Context menu item label text for page."
+  },
+  "shorten_link_label": {
+    "message": "為此連結複製縮址",
+    "description": "Context menu item label text for link."
+  },
+  "shorten_img_label": {
+    "message": "為此影像複製縮址",
+    "description": "Context menu item label text for image."
+  },
+
+  "shorten_error": {
+    "message": "噢不，建立縮址時發生錯誤。",
+    "description": "Error message when shortening URL was unsuccessful."
+  },
+  "apikey_error": {
+    "message": "偏好設定中沒有輸入 API 金鑰。",
+    "description": "Error message when shortening service needs an API key and none was provided."
+  },
+  "error_host_permission": {
+    "message": "抱歉，頁面受到瀏覽器限制無法建立縮址。",
+    "description": "Error message when running on about: or addons.mozilla.org."
+  },
+
+  "service_title": {
+    "message": "URL 縮址服務",
+    "description": "Options: Label for selecting which service (is.gd, ...) to use."
+  },
+  "service_none": {
+    "message": "（不使用外部服務）",
+    "description": "Options: No shortening service, copy found short URL or full URL only."
+  },
+  "service_custom": {
+    "message": "自訂 （下方設定）",
+    "description": "Options: Placeholder for custom URL option in dropdown."
+  },
+  "bitly_apikey_title": {
+    "message": "Bitly API 金鑰",
+    "description": "Options: Label for Bitly API key text field."
+  },
+  "bitly_apikey_description": {
+    "message": "建立 Bitly API 金鑰",
+    "description": "Options: Link to generate Bitly API key."
+  },
+  "customurl_title": {
+    "message": "自訂縮址服務 URL",
+    "description": "Options: Label for custom URL text field."
+  },
+  "customurl_description": {
+    "message": "使用 %URL% 替代原始 URL 的位置。",
+    "description": "Options: Help text for custom URL."
+  },
+
+  "shorten_canonical_title": {
+    "message": "當網址超過以下設定長度時才縮址。",
+    "description": "Options: Label for maximum URL length before forcing shortening."
+  },
+  "shorten_canonical_description": {
+    "message": "部份網站如果未達設定長度不會進行縮址。 這裡設定當超過一定長度時才使用縮址服務（0 =  不縮址）。",
+    "description": "Options: Help text for forcing shortening of long canonical URLs."
+  },
+
+  "use_special_title": {
+    "message": "在已知網站中使用特定縮址格式",
+    "description": "Options: Label for using youtu.be and other special known short URLs."
+  },
+  "use_special_description": {
+    "message": "有些網站有自己的縮址服務，像是 youtu.be。",
+    "description": "Options: Help text for using special shortening cases."
+  },
+
+  "strip_utm_title": {
+    "message": "移除網址中的 ?utm_* 參數",
+    "description": "Options: Label for removing known marketing parameters from URLs."
+  },
+  "strip_utm_description": {
+    "message": "商業活動中常常會在 URL 中加入 ?utm_campaign=something ，這可以移除。",
+    "description": "Options: Help text for removing known marketing parameters from URL."
+  },
+
+  "keep_hash_title": {
+    "message": "在網址中保留 #hash",
+    "description": "Options: Label for keeping URL #hash if present."
+  },
+  "keep_hash_description": {
+    "message": "將網址中 #hash 的部份一起加入縮址，像是 mysite.com/page#hash。",
+    "description": "Options: Help text for keeping URL #hash if present."
+  },
+
+ "notify_title": {
+    "message": "成功時顯示通知",
+    "description": "Options: Label for showing notification popup when URL was generated."
+  },
+  "notify_description": {
+    "message": "失敗時無論如何都會顯示通知。",
+    "description": "Options: Help text for showing notification popup on success."
+  },
+
+ "copy_title_title": {
+    "message": "複製時連同網頁標題一起複製",
+    "description": "Options: Label for copying page title along with URL."
+  },
+  "copy_title_description": {
+    "message": "像是： 'So why are Pandas so cute? http://nyti.ms/2xGSRyh'",
+    "description": "Options: Help text for copying page title with URL."
+  },
+
+  "save_button": {
+    "message": "儲存",
+    "description": "Options: Button label for save options."
+  },
+  "saved_notice": {
+    "message": "已儲存！",
+    "description": "Options: Indicator that options were saved."
+  }
+}
