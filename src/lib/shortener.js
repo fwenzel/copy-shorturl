@@ -1,4 +1,3 @@
-import copyToClipboard from './clipboard';
 import notify from './notify';
 
 const _ = browser.i18n.getMessage;
@@ -130,7 +129,7 @@ function finalizeUrl(longUrl, shortUrl, title) {
     } else {
       copyText = shortUrl;
     }
-    copyToClipboard(copyText);
+    navigator.clipboard.writeText(copyText);
 
     if (prefs.notify !== false) {
       notify(shortUrl);
