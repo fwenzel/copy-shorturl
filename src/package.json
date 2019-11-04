@@ -9,6 +9,6 @@
   },
   "dependencies": {
     "npm": "^6.4.1",
-    "web-ext": "^3.0.0"
+    "web-ext": "^3.2.0"
   }
 }
