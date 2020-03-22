@@ -15,5 +15,11 @@ Pull requests welcome!
 
 A special thank-you to all current and previous [contributors](https://github.com/fwenzel/copy-shorturl/graphs/contributors) to this extension. You're awesome.
 
+## Building
+
+We use webpack (to assemble the modules). To develop, run `npm run watch` (to build and automatically re-build the code), and then in a second console, something like `web-ext run` to test in Firefox.
+
+When done, `npm run build` will create a .xpi file for release.
+
 ## License
 This is free software, &copy; 2010-today Fred Wenzel and licensed under an Apache 2.0 license. For more information, read the file [`LICENSE`](./LICENSE).
