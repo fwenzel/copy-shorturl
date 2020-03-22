@@ -18,19 +18,27 @@ const serviceUrls = {
     force_https: true
   },
   bitly: {
-    // http://dev.bitly.com/links.html#v3_shorten
-    request: url => {
-      return browser.storage.local.get('prefs').then(ret => {
-        const prefs = ret['prefs'] || {};
-        if (!prefs.bitly_apikey) {
-          throw new Error(_('apikey_error'));
-        }
+    // https://dev.bitly.com/v4/#operation/createBitlink
+    request: async url => {
+      const ret = await browser.storage.local.get('prefs');
+      const prefs = ret['prefs'] || {};
+      if (!prefs.bitly_apikey) {
+        throw new Error(_('apikey_error'));
+      }
 
-        return fetch(`https://api-ssl.bitly.com/v3/shorten?access_token=` +
-                     `${prefs.bitly_apikey}&longUrl=${encodeURIComponent(url)}&format=txt`);
+      return fetch('https://api-ssl.bitly.com/v4/shorten', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${prefs.bitly_apikey}`
+        },
+        body: JSON.stringify({'long_url': url})
       });
     },
-    result: response => response.text(),
+    result: async response => {
+      const res = await response.json();
+      return res['link'];
+    },
     force_https: true
   },
 
