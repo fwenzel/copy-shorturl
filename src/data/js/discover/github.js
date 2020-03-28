@@ -4,7 +4,7 @@
     short: false,
     url: document.location.href,
     hash: document.location.hash,
-    title: document.querySelector('title').text,
+    title: document.title,
     force_service: 'gitio'
   });
 }());

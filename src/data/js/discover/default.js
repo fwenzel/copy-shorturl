@@ -6,7 +6,7 @@ const long_selectors = 'link[rel=canonical]';
 
 /** Find short URL in the page */
 function findShortUrl() {
-  const title = document.querySelector('title').text;
+  const title = document.title;
   let short = document.querySelector(short_selectors);
   let is_short;
   let link;

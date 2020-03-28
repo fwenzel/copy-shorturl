@@ -5,7 +5,7 @@
     const matches = document.location.href.match(new RegExp('/dp/(\\w+)'));
 
     if (matches) {
-      const title = document.querySelector('title').text;
+      const title = document.title;
       const shortened = new URL(`/${matches[1]}`, 'https://amzn.com');
 
       return {

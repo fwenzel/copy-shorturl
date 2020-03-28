@@ -4,7 +4,7 @@
     const url = new URL(document.location);
 
     if (url.pathname === '/watch' && url.searchParams.get('v')) {
-      const title = document.querySelector('title').text;
+      const title = document.title;
       const shortened = new URL(`/${url.searchParams.get('v')}`, 'https://youtu.be');
 
       return {
