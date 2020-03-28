@@ -3,7 +3,7 @@
   "description": "__MSG_extensionDescription__",
   "author": "Fred Wenzel",
   "homepage_url": "http://copy-shorturl.rtfd.org",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "default_locale": "en",
   "applications": {
     "gecko": {
