@@ -3,20 +3,67 @@ import notify from './notify.js';
 const _ = browser.i18n.getMessage;
 
 // Service default.
-const default_service = 'isgd';
+const DEFAULT_SERVICE = 'tinyurl';
 
 // Specify 'url' for plain-text GET APIs, or request/result for more complex
 // variants. Note: return a fetch() promise.
 // Do not forget to add origins to permissions in manifest.
 const serviceUrls = {
   none: {}, // Placeholder.
-  isgd: {
-    url: 'https://is.gd/api.php?longurl=%URL%'
-  },
+
+  // TODO: isgd appears defunct (issue #122). Remove if permanently gone.
+  // isgd: {
+  //   url: 'https://is.gd/api.php?longurl=%URL%'
+  // },
+
   tinyurl: {
     url: 'https://tinyurl.com/api-create.php?url=%URL%',
     force_https: true
   },
+
+  cuttly: {
+    request: url => {
+      let form = new FormData();
+      form.append('url', url);
+      form.append('domain', 0);  // Needed?
+      return fetch('https://cutt.ly/scripts/shortenUrl.php', {
+        method: 'POST',
+        body: form
+      });
+    },
+    result: response => response.text()
+  },
+
+  goly: {
+    request: url => fetch('https://api.go.ly/api/v1/link', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'DomainID': 2,
+        'Payload': {
+          'Destination': url
+        },
+        'Type': 0,
+        'UserID': 1
+      })
+    }),
+    result: async response => {
+      const res = await response.json();
+      if (res['Status'] === 200) {
+        return `https://go.ly/${res['Slug']}`;
+      } else {
+        throw new Error(res['Message']);
+      }
+    }
+  },
+
+  vurl: {
+    url: 'https://vurl.com/api.php?url=%URL%',
+    force_https: true
+  },
+
   bitly: {
     // https://dev.bitly.com/v4/#operation/createBitlink
     request: async url => {
@@ -79,7 +126,8 @@ function createShortUrl(url, force_service) {
           case 'none':
             return url;  // Skip shortening altogether.
           default:
-            service = serviceUrls[prefs['service'] || default_service];
+            service = serviceUrls[prefs.service];
+            service ||= serviceUrls[DEFAULT_SERVICE];  // Fallback to default.
             break;
         }
       }

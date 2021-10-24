@@ -30,8 +30,11 @@
         <label for="service" data-i18n="service_title">service</label>
         <select id="service">
           <option value="none" data-i18n="service_none">none</option>
-          <option value="isgd">is.gd (https://is.gd/abcde)</option>
-          <option value="tinyurl">tinyurl.com (http://tinyurl.com/abcde)</option>
+          <!--<option value="isgd">is.gd (https://is.gd/abcde)</option>-->
+          <option value="tinyurl">tinyurl.com (https://tinyurl.com/abcde)</option>
+          <option value="cuttly">cutt.ly (https://cutt.ly/abcde)</option>
+          <option value="goly">go.ly (https://go.ly/abcde)</option>
+          <option value="vurl">vurl.com (https://vurl.com/abcde)</option>
           <option value="bitly">bit.ly (http://bit.ly/abcde)</option>
           <option value="custom" data-i18n="service_custom">custom</option>
         </select>
@@ -41,7 +44,7 @@
       <p id="bitly_details" style="display:none">
         <label for="bitly_apikey" data-i18n="bitly_apikey_title">bitly api key</label>
         <input type="text" id="bitly_apikey">
-        <a href="https://bitly.com/a/oauth_apps"><em data-i18n="bitly_apikey_description">acquire API key</em></a>
+        <a href="https://app.bitly.com/settings/api/"><em data-i18n="bitly_apikey_description">acquire API key</em></a>
       </p>
 
       <!-- Custom URL + documentation link -->
@@ -58,7 +61,7 @@
         <em data-i18n="shorten_canonical_description">0 = never</em>
       </p>
 
-      <!-- Use special? -->
+      <!-- Use special, known shorteners? -->
       <p>
         <input type="checkbox" id="use_special">
         <label for="use_special" data-i18n="use_special_title">use special?</label>
