@@ -1,7 +1,5 @@
-const _ = browser.i18n.getMessage;
-
 const manifest = browser.runtime.getManifest();
-const addon_icon = browser.extension.getURL('data/img/icon.svg');
+const addon_icon = browser.runtime.getURL('data/img/icon.svg');
 
 
 export default function notify(txt) {
@@ -10,5 +8,5 @@ export default function notify(txt) {
     title: manifest.name,
     message: txt,
     iconUrl: addon_icon
-  })
+  });
 }

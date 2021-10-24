@@ -28,7 +28,7 @@
     "<all_urls>"
   ],
   "background": {
-    "scripts": ["dist/bundle.js"]
+    "page": "data/html/background-page.html"
   },
   "commands": {
     "shorten-page-url": {

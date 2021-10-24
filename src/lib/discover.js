@@ -1,5 +1,5 @@
-import notify from './notify';
-import processUrl from './shortener';
+import notify from './notify.js';
+import processUrl from './shortener.js';
 
 const _ = browser.i18n.getMessage;
 

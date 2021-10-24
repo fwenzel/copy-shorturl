@@ -1,8 +1,7 @@
-import discoverUrl from './discover';
-import processUrl from './shortener';
+import discoverUrl from './discover.js';
+import processUrl from './shortener.js';
 
 const _ = browser.i18n.getMessage;
-
 
 /** Add context menus and toolbar button. */
 // per-page

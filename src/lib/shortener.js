@@ -1,4 +1,4 @@
-import notify from './notify';
+import notify from './notify.js';
 
 const _ = browser.i18n.getMessage;
 
