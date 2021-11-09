@@ -3,7 +3,7 @@ import notify from './notify.js';
 const _ = browser.i18n.getMessage;
 
 // Service default.
-const DEFAULT_SERVICE = 'tinyurl';
+const DEFAULT_SERVICE = 'isgd';
 
 // Specify 'url' for plain-text GET APIs, or request/result for more complex
 // variants. Note: return a fetch() promise.
@@ -11,10 +11,9 @@ const DEFAULT_SERVICE = 'tinyurl';
 const serviceUrls = {
   none: {}, // Placeholder.
 
-  // TODO: isgd appears defunct (issue #122). Remove if permanently gone.
-  // isgd: {
-  //   url: 'https://is.gd/api.php?longurl=%URL%'
-  // },
+  isgd: {
+    url: 'https://is.gd/api.php?longurl=%URL%'
+  },
 
   tinyurl: {
     url: 'https://tinyurl.com/api-create.php?url=%URL%',
@@ -32,31 +31,6 @@ const serviceUrls = {
       });
     },
     result: response => response.text()
-  },
-
-  goly: {
-    request: url => fetch('https://api.go.ly/api/v1/link', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        'DomainID': 2,
-        'Payload': {
-          'Destination': url
-        },
-        'Type': 0,
-        'UserID': 1
-      })
-    }),
-    result: async response => {
-      const res = await response.json();
-      if (res['Status'] === 200) {
-        return `https://go.ly/${res['Slug']}`;
-      } else {
-        throw new Error(res['Message']);
-      }
-    }
   },
 
   vurl: {
