@@ -57,6 +57,14 @@
     "message": "在 Bitly 上生成 API 键值",
     "description": "Options: Link to generate Bitly API key."
   },
+  "kuttit_apikey_title": {
+    "message": "Kutt.it API Key",
+    "description": "Options: Label for Kutt.it API key text field."
+  },
+  "kuttit_apikey_description": {
+    "message": "Generate an API key with Kutt.it",
+    "description": "Options: Link to generate Kutt.it API key."
+  },
   "customurl_title": {
     "message": "自定义网址",
     "description": "Options: Label for custom URL text field."

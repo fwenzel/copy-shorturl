@@ -36,6 +36,7 @@
           <option value="goly">go.ly (https://go.ly/abcde)</option>
           <option value="vurl">vurl.com (https://vurl.com/abcde)</option>
           <option value="bitly">bit.ly (http://bit.ly/abcde)</option>
+          <option value="kuttit">kutt.it (http://kutt.it/abcde)</option>
           <option value="custom" data-i18n="service_custom">custom</option>
         </select>
       </p>
@@ -43,8 +44,15 @@
       <!-- Bitly API key -->
       <p id="bitly_details" style="display:none">
         <label for="bitly_apikey" data-i18n="bitly_apikey_title">bitly api key</label>
-        <input type="text" id="bitly_apikey">
+        <input type="password" id="bitly_apikey">
         <a href="https://app.bitly.com/settings/api/"><em data-i18n="bitly_apikey_description">acquire API key</em></a>
+      </p>
+
+      <!-- Kutt.it API key -->
+      <p id="kuttit_details" style="display:none">
+        <label for="kuttit_apikey" data-i18n="kuttit_apikey_title">kutt.it api key</label>
+        <input type="password" id="kuttit_apikey">
+        <a href="https://kutt.it/settings"><em data-i18n="kuttit_apikey_description">Acquire API key</em></a>
       </p>
 
       <!-- Custom URL + documentation link -->

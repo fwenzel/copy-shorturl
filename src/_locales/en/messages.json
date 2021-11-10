@@ -57,6 +57,14 @@
     "message": "Generate an API key with Bitly",
     "description": "Options: Link to generate Bitly API key."
   },
+  "kuttit_apikey_title": {
+    "message": "Kutt.it API Key",
+    "description": "Options: Label for Kutt.it API key text field."
+  },
+  "kuttit_apikey_description": {
+    "message": "Generate an API key with Kutt.it",
+    "description": "Options: Link to generate Kutt.it API key."
+  },
   "customurl_title": {
     "message": "Custom URL",
     "description": "Options: Label for custom URL text field."

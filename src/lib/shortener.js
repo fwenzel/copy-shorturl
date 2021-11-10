@@ -63,6 +63,31 @@ const serviceUrls = {
     force_https: true
   },
 
+  kuttit: {
+    // https://docs.kutt.it/#tag/links/paths/~1links/post
+    request: async url => {
+      const ret = await browser.storage.local.get('prefs');
+      const prefs = ret['prefs'] || {};
+      if (!prefs.kuttit_apikey) {
+        throw new Error(_('apikey_error'));
+      }
+
+      return fetch('https://kutt.it/api/v2/links', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': prefs.kuttit_apikey
+        },
+        body: JSON.stringify({'target': url})
+      });
+    },
+    result: async response => {
+      const res = await response.json();
+      return res['link'];
+    },
+    force_https: true
+  },
+
   /** Special services: Cannot be chosen manually. **/
   gitio: {
     // https://github.blog/2011-11-10-git-io-github-url-shortener/
