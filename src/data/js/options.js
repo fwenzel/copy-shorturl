@@ -11,6 +11,10 @@ const options = {
     attr: 'value',
     def: ''
   },
+  kuttit_domain: {
+    attr: 'value',
+    def: ''
+  },
   custom_url: {
     attr: 'value',
     def: ''

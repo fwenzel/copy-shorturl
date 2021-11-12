@@ -72,13 +72,18 @@ const serviceUrls = {
         throw new Error(_('apikey_error'));
       }
 
+      let payload = {'target': url};
+      if (prefs['kuttit_domain'] != '') { // Use custom domain only if set.
+        payload['domain'] = prefs['kuttit_domain'];
+      }
+
       return fetch('https://kutt.it/api/v2/links', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-API-Key': prefs.kuttit_apikey
         },
-        body: JSON.stringify({'target': url})
+        body: JSON.stringify(payload)
       });
     },
     result: async response => {

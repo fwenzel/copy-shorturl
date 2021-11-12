@@ -65,6 +65,14 @@
     "message": "Generate an API key with Kutt.it",
     "description": "Options: Link to generate Kutt.it API key."
   },
+  "kuttit_domain_title": {
+    "message": "Kutt.it Custom Domain",
+    "description": "Options: Label for Kutt.it custom domain text field."
+  },
+  "kuttit_domain_description": {
+    "message": "(optional) use a custom domain with kutt.it",
+    "description": "Options: Link to set Kutt.it custom domain."
+  },
   "customurl_title": {
     "message": "Custom URL",
     "description": "Options: Label for custom URL text field."
