@@ -92,56 +92,56 @@
   },
 
   "use_special_title": {
-    "message": "Use special case URL formats for known sites",
+    "message": "Uporabi posebne oblike URL-ja za znane strani",
     "description": "Options: Label for using youtu.be and other special known short URLs."
   },
   "use_special_description": {
-    "message": "Some sites have special shortening formats, like youtu.be.",
+    "message": "Nekatere strani ponujajo posebne oblike krajšanja, kot je npr. youtu.be.",
     "description": "Options: Help text for using special shortening cases."
   },
 
   "strip_utm_title": {
-    "message": "Remove ?utm_* parameters from URL",
+    "message": "Odstrani parametre ?utm_* iz URL-ja",
     "description": "Options: Label for removing known marketing parameters from URLs."
   },
   "strip_utm_description": {
-    "message": "Marketing campaigns often add unnecessary ?utm_campaign=something tokens to the URL that are safe to remove.",
+    "message": "Tržne kampanje URL-jem velikokrat dodajo nepotrebne žetone ?utm_campaign=something, ki jih lahko varno odstranite.",
     "description": "Options: Help text for removing known marketing parameters from URL."
   },
 
   "keep_hash_title": {
-    "message": "Keep #hash in final URL",
+    "message": "Obdrži #hash v končnem URL-ju",
     "description": "Options: Label for keeping URL #hash if present."
   },
   "keep_hash_description": {
-    "message": "Add #hash part of mysite.com/page#hash back to shortened URL.",
+    "message": "Dodaj del #hash strani mysite.com/page#hash nazaj v skrajšan URL.",
     "description": "Options: Help text for keeping URL #hash if present."
   },
 
  "notify_title": {
-    "message": "Show notification popup on success",
+    "message": "Prikaži pojavno obvestilo ob uspešnem krajšanju",
     "description": "Options: Label for showing notification popup when URL was generated."
   },
   "notify_description": {
-    "message": "Errors will always show a notification.",
+    "message": "Napake bodo vedno prikazale obvestilo.",
     "description": "Options: Help text for showing notification popup on success."
   },
 
  "copy_title_title": {
-    "message": "Copy page title in addition to URL",
+    "message": "Kopiraj naziv strani poleg URL-ja",
     "description": "Options: Label for copying page title along with URL."
   },
   "copy_title_description": {
-    "message": "Example: 'So why are Pandas so cute? http://nyti.ms/2xGSRyh'",
+    "message": "Primer: 'Torej zakaj so pande tako prikupne? http://nyti.ms/2xGSRyh'",
     "description": "Options: Help text for copying page title with URL."
   },
 
   "save_button": {
-    "message": "Save",
+    "message": "Shrani",
     "description": "Options: Button label for save options."
   },
   "saved_notice": {
-    "message": "Saved!",
+    "message": "Shranjeno!",
     "description": "Options: Indicator that options were saved."
   }
 }
