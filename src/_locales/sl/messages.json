@@ -1,1 +1,148 @@
+{
+  "extensionDescription": {
+    "message": "Zaznaj ali ustvari kratki URL za trenutno stran.",
+    "description": ""
+  },
+  "extensionName": {
+    "message": "Copy ShortURL",
+    "description": "name of extension"
+  },
+  "browserAction_label": {
+    "message": "Kopiraj kratki URL",
+    "description": "Toolbar button label text."
+  },
+  "menuitem_label": {
+    "message": "Kopiraj kratki URL",
+    "description": "Context menu item label text for page."
+  },
+  "shorten_link_label": {
+    "message": "Kopiraj kratki URL te povezave",
+    "description": "Context menu item label text for link."
+  },
+  "shorten_img_label": {
+    "message": "Kopiraj kratki URL te slike",
+    "description": "Context menu item label text for image."
+  },
+
+  "shorten_error": {
+    "message": "ZOMG, napaka pri ustvarjanju kratkega URL-ja.",
+    "description": "Error message when shortening URL was unsuccessful."
+  },
+  "apikey_error": {
+    "message": "V možnostih ni ključa API.",
+    "description": "Error message when shortening service needs an API key and none was provided."
+  },
+  "error_host_permission": {
+    "message": "Žal se Copy ShortURL ne more izvajati na straneh, ki jih omejuje brskalnik.",
+    "description": "Error message when running on about: or addons.mozilla.org."
+  },
+
+  "service_title": {
+    "message": "Storitev krajšanja URL-ja",
+    "description": "Options: Label for selecting which service (is.gd, ...) to use."
+  },
+  "service_none": {
+    "message": "(brez zunanje storitve)",
+    "description": "Options: No shortening service, copy found short URL or full URL only."
+  },
+  "service_custom": {
+    "message": "Po meri (določite spodaj)",
+    "description": "Options: Placeholder for custom URL option in dropdown."
+  },
+  "bitly_apikey_title": {
+    "message": "Splošni žeton za dostop Bitly",
+    "description": "Options: Label for Bitly API key text field."
+  },
+  "bitly_apikey_description": {
+    "message": "Ustvari ključ za API z Bitlyjem",
+    "description": "Options: Link to generate Bitly API key."
+  },
+  "kuttit_apikey_title": {
+    "message": "Ključ za API Kutt.it",
+    "description": "Options: Label for Kutt.it API key text field."
+  },
+  "kuttit_apikey_description": {
+    "message": "Ustvari ključ za API Kutt.it",
+    "description": "Options: Link to generate Kutt.it API key."
+  },
+  "kuttit_domain_title": {
+    "message": "Domena po meri Kutt.it",
+    "description": "Options: Label for Kutt.it custom domain text field."
+  },
+  "kuttit_domain_description": {
+    "message": "(izbirno) uporabi domeno po meri kutt.it",
+    "description": "Options: Link to set Kutt.it custom domain."
+  },
+  "customurl_title": {
+    "message": "CURL po meri",
+    "description": "Options: Label for custom URL text field."
+  },
+  "customurl_description": {
+    "message": "uporabite %URL% kot ogrado za dolgi URL",
+    "description": "Options: Help text for custom URL."
+  },
+
+  "shorten_canonical_title": {
+    "message": "Skrajšaj standardni URL, če je daljši od",
+    "description": "Options: Label for maximum URL length before forcing shortening."
+  },
+  "shorten_canonical_description": {
+    "message": "Nekatere strani ponujajo standardne \"kratke URL-je\", ki niso kratki. Uporabi storitev krajšanja, če so daljši od X znakov (0 = ne krajšaj).",
+    "description": "Options: Help text for forcing shortening of long canonical URLs."
+  },
+
+  "use_special_title": {
+    "message": "Use special case URL formats for known sites",
+    "description": "Options: Label for using youtu.be and other special known short URLs."
+  },
+  "use_special_description": {
+    "message": "Some sites have special shortening formats, like youtu.be.",
+    "description": "Options: Help text for using special shortening cases."
+  },
+
+  "strip_utm_title": {
+    "message": "Remove ?utm_* parameters from URL",
+    "description": "Options: Label for removing known marketing parameters from URLs."
+  },
+  "strip_utm_description": {
+    "message": "Marketing campaigns often add unnecessary ?utm_campaign=something tokens to the URL that are safe to remove.",
+    "description": "Options: Help text for removing known marketing parameters from URL."
+  },
+
+  "keep_hash_title": {
+    "message": "Keep #hash in final URL",
+    "description": "Options: Label for keeping URL #hash if present."
+  },
+  "keep_hash_description": {
+    "message": "Add #hash part of mysite.com/page#hash back to shortened URL.",
+    "description": "Options: Help text for keeping URL #hash if present."
+  },
+
+ "notify_title": {
+    "message": "Show notification popup on success",
+    "description": "Options: Label for showing notification popup when URL was generated."
+  },
+  "notify_description": {
+    "message": "Errors will always show a notification.",
+    "description": "Options: Help text for showing notification popup on success."
+  },
+
+ "copy_title_title": {
+    "message": "Copy page title in addition to URL",
+    "description": "Options: Label for copying page title along with URL."
+  },
+  "copy_title_description": {
+    "message": "Example: 'So why are Pandas so cute? http://nyti.ms/2xGSRyh'",
+    "description": "Options: Help text for copying page title with URL."
+  },
+
+  "save_button": {
+    "message": "Save",
+    "description": "Options: Button label for save options."
+  },
+  "saved_notice": {
+    "message": "Saved!",
+    "description": "Options: Indicator that options were saved."
+  }
+}
 
