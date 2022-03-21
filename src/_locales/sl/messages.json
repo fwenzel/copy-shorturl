@@ -25,7 +25,7 @@
   },
 
   "shorten_error": {
-    "message": "ZOMG, napaka pri ustvarjanju kratkega URL-ja.",
+    "message": "O jej, napaka pri ustvarjanju kratkega URL-ja.",
     "description": "Error message when shortening URL was unsuccessful."
   },
   "apikey_error": {
@@ -50,11 +50,11 @@
     "description": "Options: Placeholder for custom URL option in dropdown."
   },
   "bitly_apikey_title": {
-    "message": "Splošni žeton za dostop Bitly",
+    "message": "Splošni žeton za dostop do Bitlyja",
     "description": "Options: Label for Bitly API key text field."
   },
   "bitly_apikey_description": {
-    "message": "Ustvari ključ za API z Bitlyjem",
+    "message": "Z Bitlyjem ustvari ključ za API",
     "description": "Options: Link to generate Bitly API key."
   },
   "kuttit_apikey_title": {
@@ -74,7 +74,7 @@
     "description": "Options: Link to set Kutt.it custom domain."
   },
   "customurl_title": {
-    "message": "CURL po meri",
+    "message": "URL po meri",
     "description": "Options: Label for custom URL text field."
   },
   "customurl_description": {
@@ -114,7 +114,7 @@
     "description": "Options: Label for keeping URL #hash if present."
   },
   "keep_hash_description": {
-    "message": "Dodaj del #hash strani mysite.com/page#hash nazaj v skrajšan URL.",
+    "message": "Dodaj del #hash iz strani mysite.com/page#hash nazaj v skrajšan URL.",
     "description": "Options: Help text for keeping URL #hash if present."
   },
 
@@ -128,7 +128,7 @@
   },
 
  "copy_title_title": {
-    "message": "Kopiraj naziv strani poleg URL-ja",
+    "message": "Poleg URL-ja kopiraj naziv strani",
     "description": "Options: Label for copying page title along with URL."
   },
   "copy_title_description": {
