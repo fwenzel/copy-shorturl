@@ -41,9 +41,6 @@ export default function discoverUrl() {
         case /(www\.)?amazon\.com/.test(url.hostname):
           return 'amazon';
 
-        case /(www\.)?github\.com/.test(url.hostname):
-          return 'github';
-
         case /(www\.)?youtube\.com/.test(url.hostname):
           return 'youtube';
 

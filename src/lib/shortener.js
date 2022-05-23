@@ -94,18 +94,7 @@ const serviceUrls = {
   },
 
   /** Special services: Cannot be chosen manually. **/
-  gitio: {
-    // https://github.blog/2011-11-10-git-io-github-url-shortener/
-    request: url => fetch('https://git.io/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      redirect: 'manual',
-      body: `url=${encodeURIComponent(url)}`
-    }),
-    result: response => response.headers.get('Location'),
-  },
+  // Note: No special services implemented at this time after git.io shut down.
 }
 
 
