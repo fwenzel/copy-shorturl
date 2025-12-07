@@ -99,73 +99,63 @@ const serviceUrls = {
 
 
 /** Create a short URL from is.gd, tinyurl, etc. */
-function createShortUrl(url, force_service) {
-  let req;
-
+async function createShortUrl(url, force_service) {
   try {
-    // Get shortening service from prefs.
-    return browser.storage.local.get('prefs').then(ret => {
-      const prefs = ret['prefs'] || {};
-      let service;
+    const ret = await browser.storage.local.get('prefs');
+    const prefs = ret['prefs'] || {};
+    let service;
 
-      // Hardcoded special-cased websites can enforce a shortening service.
-      if (prefs.service !== 'none' && force_service) {
-        service = serviceUrls[force_service];
-      } else {
-        switch (prefs.service) {
-          case 'custom':
-            service = { url: prefs.custom_url };
-            break;
-          case 'none':
-            return url;  // Skip shortening altogether.
-          default:
-            service = serviceUrls[prefs.service];
-            service ||= serviceUrls[DEFAULT_SERVICE];  // Fallback to default.
-            break;
-        }
+    // Hardcoded special-cased websites can enforce a shortening service.
+    if (prefs.service !== 'none' && force_service) {
+      service = serviceUrls[force_service];
+    } else {
+      switch (prefs.service) {
+        case 'custom':
+          service = { url: prefs.custom_url };
+          break;
+        case 'none':
+          return url;  // Skip shortening altogether.
+        default:
+          service = serviceUrls[prefs.service];
+          service ||= serviceUrls[DEFAULT_SERVICE];  // Fallback to default.
+          break;
       }
+    }
 
-      if (service.request) {
-        req = service.request(url);
-      } else {
-        let _uri = service.url.replace('%URL%', encodeURIComponent(url));
-        req = fetch(_uri);
-      }
+    let req;
+    if (service.request) {
+      req = service.request(url);
+    } else {
+      let _uri = service.url.replace('%URL%', encodeURIComponent(url));
+      req = fetch(_uri);
+    }
 
-      return req.then(response => {
-        if (response.ok) {
-          let result = service.result ? service.result(response) : response.text();
-          return result;
-        } else {
-          throw new Error(_('shorten_error'));
-        }
-      }).then(url => {
-        // Rewrite shortened URL to https if the service requires it.
-        if (service.force_https || false) {
-          let parsedUrl = new URL(url);
-          parsedUrl.protocol = 'https';
-          url = parsedUrl.href;
-        }
-        return url;
-      }).catch(err => {
-        notify(err.message);
-      });
-
-    }).catch(err => {
-      console.log(err.message);
+    const response = await req;
+    if (!response.ok) {
       throw new Error(_('shorten_error'));
-    });
+    }
 
-  } catch (e) {
-    notify(e.message);
-    return false;
+    let result = service.result ? await service.result(response) : await response.text();
+
+    // Rewrite shortened URL to https if the service requires it.
+    if (service.force_https || false) {
+      let parsedUrl = new URL(result);
+      parsedUrl.protocol = 'https';
+      result = parsedUrl.href;
+    }
+
+    return result;
+  } catch (err) {
+    notify(err.message || _('shorten_error'));
+    throw err;
   }
 }
 
 
 /** Finalize (notify and copy to clipboard) a detected or generated URL. */
-function finalizeUrl(longUrl, shortUrl, title) {
-  browser.storage.local.get('prefs').then(ret => {
+async function finalizeUrl(longUrl, shortUrl, title) {
+  try {
+    const ret = await browser.storage.local.get('prefs');
     const prefs = ret['prefs'] || {};
     let copyText;
 
@@ -178,22 +168,25 @@ function finalizeUrl(longUrl, shortUrl, title) {
     } else {
       copyText = shortUrl;
     }
-    navigator.clipboard.writeText(copyText);
+    await navigator.clipboard.writeText(copyText);
 
     if (prefs.notify !== false) {
       notify(shortUrl);
     }
-  });
+  } catch (err) {
+    notify(err.message || _('shorten_error'));
+  }
 }
 
 
 /** Handle a URL found on the page */
-export default function processUrl(found_url) {
+export default async function processUrl(found_url) {
   let url = found_url['url'];
   let title = found_url['title'] || '';
   let hash = found_url['hash'] || '';
 
-  browser.storage.local.get('prefs').then(ret => {
+  try {
+    const ret = await browser.storage.local.get('prefs');
     const prefs = ret['prefs'] || {};
 
     if (prefs.strip_urm !== false || prefs.keep_hash !== false) {
@@ -220,10 +213,12 @@ export default function processUrl(found_url) {
 
     // Shorten URL if it's not considered "short" or exceeds length limit.
     if (!found_url['short'] || (prefs.shorten_canonical > 0 && url.length > prefs.shorten_canonical)) {
-      createShortUrl(url, found_url['force_service'])
-      .then(result => finalizeUrl(url, result, title));
+      const result = await createShortUrl(url, found_url['force_service']);
+      await finalizeUrl(url, result, title);
     } else {
-      finalizeUrl(null, url, title);
+      await finalizeUrl(null, url, title);
     }
-  });
+  } catch (err) {
+    notify(err.message || _('shorten_error'));
+  }
 }

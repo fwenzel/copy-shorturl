@@ -5,16 +5,18 @@ const _ = browser.i18n.getMessage;
 
 
 /** Execute discovery content script in the current tab. */
-function runDiscoveryScript(script) {
-  browser.tabs.executeScript({
-    file: `/data/js/discover/${script}.js`
-  }).catch(e => {
+async function runDiscoveryScript(script) {
+  try {
+    await browser.tabs.executeScript({
+      file: `/data/js/discover/${script}.js`
+    });
+  } catch (e) {
     if (e.message && /Missing host permission for the tab/.test(e.message)) {
       notify(_('error_host_permission'));
     } else {
       throw e;
     }
-  });
+  }
 }
 
 
@@ -22,34 +24,38 @@ function runDiscoveryScript(script) {
  * Execute content script to discover canonical short URL on current tab,
  * then listen to it being returned via message.
  */
-export default function discoverUrl() {
-  browser.storage.local.get('prefs').then(ret => {
+export default async function discoverUrl() {
+  try {
+    const ret = await browser.storage.local.get('prefs');
     const prefs = ret['prefs'] || {};
+    let script = 'default';
 
     // Do not investigate special cases if preffed off.
-    if (prefs.use_special === false) {
-      return 'default';
-    }
-
-    return browser.tabs.query({active: true, currentWindow: true})
-    .then(tabs => {
+    if (prefs.use_special !== false) {
+      const tabs = await browser.tabs.query({active: true, currentWindow: true});
       const url = new URL(tabs[0].url);
 
       // Trigger special URL logic for certain origins.
       // Most the time, just generically discover URLs.
       switch (true) {
         case /(www\.)?amazon\.com/.test(url.hostname):
-          return 'amazon';
+          script = 'amazon';
+          break;
 
         case /(www\.)?youtube\.com/.test(url.hostname):
-          return 'youtube';
+          script = 'youtube';
+          break;
 
         default:
-          return 'default';
+          script = 'default';
+          break;
       }
-    });
-  })
-  .then(script => runDiscoveryScript(script));
+    }
+
+    await runDiscoveryScript(script);
+  } catch (err) {
+    notify(err.message);
+  }
 }
 
 /** Listen to content scripts posting back after discovery */

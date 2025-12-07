@@ -47,14 +47,15 @@ const options = {
 let savedTimeout; // Hide saved indicator after a bit.
 
 
-function init() {
+async function init() {
   // Initialize i18n.
   document.querySelectorAll('[data-i18n]').forEach(node => {
     node.textContent = browser.i18n.getMessage(node.dataset.i18n);
   });
 
   // Restore settings.
-  browser.storage.local.get('prefs').then(res => {
+  try {
+    const res = await browser.storage.local.get('prefs');
     let currentPrefs = res['prefs'] || {};
     Object.keys(options).forEach(id => {
       let val = (typeof currentPrefs[id] !== 'undefined') ? currentPrefs[id] : options[id].def;
@@ -62,7 +63,9 @@ function init() {
     });
 
     showHideDetails();
-  });
+  } catch (err) {
+    console.log(err.message);
+  }
 
   document.querySelector('#service').addEventListener('change', showHideDetails);
 }
@@ -79,27 +82,27 @@ function showHideDetails() {
   document.querySelector('#always_shorten').style.display = (selected === 'none') ? 'none': 'block';
 }
 
-function saveOptions(e) {
+async function saveOptions(e) {
   e.preventDefault();
 
   let toSave = {prefs: {}};
   Object.keys(options).forEach(id => {
     toSave['prefs'][id] = document.getElementById(id)[options[id].attr];
   });
-  browser.storage.local.set(toSave).then(() => {
-    // Indicate that we saved succesfully.
-    let saved = document.querySelector('#saved');
+  await browser.storage.local.set(toSave);
 
-    saved.style.display = 'block';
+  // Indicate that we saved succesfully.
+  let saved = document.querySelector('#saved');
 
-    if (savedTimeout) {
-      clearTimeout(savedTimeout);
-    }
-    savedTimeout = setTimeout(() => {
-      saved.style.display = 'none';
-      savedTimeout = null;
-    }, 3000)
-  });
+  saved.style.display = 'block';
+
+  if (savedTimeout) {
+    clearTimeout(savedTimeout);
+  }
+  savedTimeout = setTimeout(() => {
+    saved.style.display = 'none';
+    savedTimeout = null;
+  }, 3000)
 }
 
 document.addEventListener('DOMContentLoaded', init);
