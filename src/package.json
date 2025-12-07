@@ -4,9 +4,8 @@
     "build": "web-ext build --ignore-files dist/ webpack.*",
     "test": "web-ext run --verbose"
   },
-  "devDependencies": {},
   "dependencies": {
     "npm": ">=6.14.6",
-    "web-ext": "^6.5.0"
+    "web-ext": "^9.2.0"
   }
 }
